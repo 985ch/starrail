@@ -1,0 +1,84 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="borderBox editorBox">
+  <view class="labelText">状态</view>
+  <view class="lineBox grayLine">
+    <view class="leftBox sliderText">血量:{{filter.floor(state.hp)}}/{{filter.floor(state.hpMax)}}({{filter.toFix(state.hp/state.hpMax*100,1,true)}})</view>
+    <view class="sliderBox">
+      <slider class="inline hpSlider" min="0" max="{{state.hpMax}}" block-size="16" value="{{state.hp}}" data-key="hp" bind:changing="onStateChange" bind:change="onStateChanged"></slider>
+    </view>
+  </view>
+  <view wx:if="{{state.enMax}}" class="lineBox">
+    <view class="leftBox sliderText">能量:{{filter.toFix(state.en, 1, false)}}/{{state.enMax}}({{filter.toFix(state.en/state.enMax*100,1,true)}})</view>
+    <view class="sliderBox">
+      <slider class="inline hpSlider" min="0" max="{{state.enMax}}" block-size="16" value="{{state.en}}" data-key="en" bind:changing="onStateChange" bind:change="onStateChanged"></slider>
+    </view>
+  </view>
+</view>
+<view class="borderBox editorBox">
+  <save-data name="{{charName}}" bind:load="onCharacterChange"></save-data>
+</view>
+<view class="borderBox editorBox">
+  <view class="labelText">光锥</view>
+  <group-picker list="{{weaponList}}" bind:select="onWeaponChange" value="{{weaponSel}}">
+    <my-label label="光锥" labelwidth="2.45" bind:tip="onWeaponTip">
+      <text class="{{weapon.rarity || ''}}">{{weapon.name}}</text>
+    </my-label>
+  </group-picker>
+  <view class="lineBox">
+    <my-picker style="flex-grow:1;" start="{{1}}" end="{{5}}" value="{{weaponStar}}"  bind:select="onWeaponStarChange">
+      <my-label label="精炼">{{weaponStar}}</my-label>
+    </my-picker>
+    <my-picker style="flex-grow:1;" type="array" list="{{levelList}}" value="{{weaponLvIdx}}"  bind:select="OnWeaponLvIdxChange">
+      <my-label label="等级">{{levelList[weaponLvIdx].text}}</my-label>
+    </my-picker>
+  </view>
+  <view class="descBox sliderText">{{weaponDesc}}</view>
+</view>
+<view class="borderBox editorBox">
+  <view class="labelText">技能</view>
+  <view class="lineBox">
+    <my-picker style="flex-grow:1;" start="{{0}}" end="{{6}}" value="{{charSoul}}" bind:select="onCharSoulChange">
+      <my-label label="星魂">{{charSoul}}</my-label>
+    </my-picker>
+    <my-picker style="flex-grow:1;" type="array" list="{{levelList}}" value="{{charLvIdx}}" bind:select="onCharLvIdxChange">
+      <my-label label="等级">{{levelList[charLvIdx].text}}</my-label>
+    </my-picker>
+  </view>
+  <view class="lineBox">
+    <my-picker style="flex-grow:1;" start="{{1}}" end="{{6}}" value="{{skills.na || 0}}" data-key="na" bind:select="onSkillLvChange">
+      <my-label labelwidth="7" label="普攻">{{skills.na || 0}}</my-label>
+    </my-picker>
+    <my-picker style="flex-grow:1;" start="{{1}}" value="{{skills.ns || 0}}" data-key="ns" bind:select="onSkillLvChange">
+      <my-label labelwidth="7" label="战技">{{skills.ns}}</my-label>
+    </my-picker>
+    <my-picker style="flex-grow:1;" start="{{1}}" value="{{skills.us || 0}}" data-key="us" bind:select="onSkillLvChange">
+      <my-label labelwidth="7" label="终结技">{{skills.us || 0}}</my-label>
+    </my-picker>
+    <my-picker style="flex-grow:1;" start="{{1}}" value="{{skills.ps || 0}}" data-key="ps" bind:select="onSkillLvChange">
+      <my-label labelwidth="7" label="天赋">{{skills.ps}}</my-label>
+    </my-picker>
+  </view>
+  <view class="lineBox">
+    <my-checkbox wx:for="{{exSkList}}" wx:key="unique" wx:for-index="index"
+      style="width:33.33%" left="{{index===0}}" right="{{index===exSkList.length - 1}}" label="{{item}}" 
+      checked="{{skills.ex[index]!==0}}" data-index="{{index}}" bind:change="onExSkillChange">
+    </my-checkbox>
+  </view>
+  <view class="lineBox" wx:for="{{attrList}}" wx:for-index="idxLine" wx:for-item="lineList" wx:key="idxLine">
+    <my-checkbox wx:for="{{lineList}}" wx:for-index="idx" wx:key="idx" style="width:20%" size="mini"
+      left="{{idx===0}}" right="{{idx===lineList.length-1}}" label="{{item.text}}"
+      checked="{{skills.attr[item.idx]!==0}}" data-index="{{item.idx}}" bind:change="onAttrChange">
+    </my-checkbox>
+  </view>
+  <view class="borderBox editorBox">
+  <view class="spaceBox">
+    <view class="labelText">遗器</view>
+    <view>
+      <view class="labelBtn" bindtap="onExport">导出配置</view>
+      <view class="labelBtn" bindtap="onImport">导入配置</view>
+    </view>
+  </view>
+  <equip-info tid="{{tid}}" cid="{{tid}}" curMember="{{curMember}}" mode="full" bindtap="onShowEquipTip"></equip-info>
+</view>
+</view>
+

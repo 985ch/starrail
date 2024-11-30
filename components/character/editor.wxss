@@ -1,0 +1,40 @@
+@import "../common.wxss";
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}
+.sliderBox {
+  width: 50%;
+  flex-direction: row;
+  height: 50rpx;
+}
+.hpSlider {
+  width: 90%;
+  margin:0 40rpx 0 10rpx;
+}
+.sliderText {
+  font-size: 26rpx;
+  display: inline-block;
+  padding: 0 5rpx;
+}
+.leftBox {
+  width: 45%;
+  display: inline-block;
+}
+.descBox {
+  min-height: 170rpx;
+}
+.leaveTop {
+  margin-top: 20rpx;
+}
+.labelBtn {
+  display: inline-block;
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}

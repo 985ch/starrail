@@ -1,0 +1,13 @@
+<view class="borderBox mainBox">
+  <view class="labelText">管理存档数据</view>
+  <view class="bottomLine"/>
+  <view class="mainBox">
+    <view class="labelText">上传本地存档</view>
+    <view class="tip red">上传新的存档之后您的原有存档会被覆盖，请务必注意</view>
+    <view class="tip red">上传的存档仅保证30天内可用，超时存档视情况可能会被清理</view>
+    <my-button left right bindtap="onUpload">上传本地存档到服务器</my-button>
+    <view class="labelText topSpace">下载服务器存档</view>
+    <view class="tip red">下载存档之后本地存档会被覆盖，请务必注意</view>
+    <my-button left right bindtap="onDownload">下载服务器存档到本地</my-button>
+  </view>
+</view>

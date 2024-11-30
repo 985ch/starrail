@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ebox": "/components/equipment/ebox",
+    "icon": "/components/equipment/icon",
+    "my-label": "/components/my-label",
+    "my-picker":"/components/my-picker",
+    "equip-new":"/components/equipment/equip-new",
+    "edit-dlg": "/components/equipment/edit-dlg",
+    "recycle-view": "miniprogram-recycle-view/recycle-view",
+    "recycle-item": "miniprogram-recycle-view/recycle-item",
+    "my-dlg": "/components/my-dlg"
+  }
+}

@@ -1,0 +1,48 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<my-dlg show="{{show}}" title="自动配装[{{character}}]" confirmText="{{confirmText}}" cancelText="{{cancelText}}"
+  bind:cancel="onCancel" bind:confirm="onConfirm" height="{{900}}" overwriteCancel>
+  <view class="title bottomLine"> 当前阶段 </view>
+  <view class="lineBox spc btmSpc">
+    <view class="stepBox box {{mode==='setup'?'checked':''}}">设置规则</view>
+    <view class="stepBox box {{mode==='buff'?'checked':''}}">设置状态</view>
+    <view class="stepBox box {{mode==='compute'?'checked':''}}">正在配装</view>
+    <view class="stepBox box {{mode==='complete'?'checked':''}}">完成配装</view>
+  </view>
+  <block wx:if="{{mode==='setup'}}">
+    <view class="title bottomLine">配装规则</view>
+    <rule-box name="{{character}}" rule="{{rule}}" attrs="{{attrs}}" count="{{rCount}}" bind:change="onSettingChange"></rule-box>
+    <view class="title topSpace bottomLine">主词条锁定</view>
+    <view class="spc tip">可以锁定四个部位的主词条，从而提高配装效率</view>
+    <main-word mainWord="{{main}}" bind:change="onSettingChange"></main-word>
+    <view class="title topSpace bottomLine">套装限制</view>
+    <set-selector set4="{{set4}}" set2="{{set2}}" bind:change="onSettingChange"></set-selector>
+    <view class="title topSpace bottomLine">其他规则</view>
+    <view class="spc tip">忽略其他角色身上的遗器可以避免配装冲突</view>
+    <view class="spc">
+      <view class="inline check box {{ignore[0]?'checked':'disable'}}" data-index="{{0}}" bindtap="onSwapDisable">忽略队友身上的遗器</view>
+      <view class="inline check box {{ignore[1]?'checked':'disable'}}" data-index="{{1}}" bindtap="onSwapDisable">忽略后台队伍的遗器</view>
+    </view>
+    <view class="spc tip">选中后无论遗器当前等级为多少，其主属性均按满级计算</view>
+    <view class="spc">
+      <view class="check box {{maxMainWord?'checked':'disable'}}" bindtap="onSwapMaxMain">主属性按满级计算</view>
+    </view>
+    <view class="title topSpace bottomLine">配速计算</view>
+    <speed-box></speed-box>
+  </block>
+  <block wx:elif="{{mode==='buff'}}">
+    <view class="title bottomLine">状态配置</view>
+    <buff-selector set4="{{set4}}" set2="{{set2}}" buffInfo="{{buffInfo}}" bind:change="onSettingChange"></buff-selector>
+  </block>
+  <block wx:else>
+    <view class="spc">{{totalCount>0? '穷举中：' + (count+skip) + '/' + totalCount + '(跳过'+skip+')': '正在初始化'}}</view>
+    <view class="spc">总耗时：{{filter.toFix(cost,1, false)}}秒（预计耗时：{{cost===0 || totalCount===0 ? '-' : filter.toFix(totalCount/(count+skip)*cost, 1, false)}}秒）</view>
+    <equip-set class="" wx:if="{{results.length>0}}" wx:for="{{results}}" wx:key="index" json="{{item.equips}}"
+      title="{{index===0?'最佳配置': '较好配置'}}" score="{{filter.floor(item.score)}}" simple></equip-set> 
+    <view class="spc setName" wx:if="{{results.length===0}}">没找到符合要求的配装组合</view>
+    <view class="introText">最佳配置是当前状态下的全局最佳，而非所有情况下的全局最佳。</view>
+    <view class="introText">算法为了尽快算出全局最佳而对遗器进行了筛选，因此以上结果并非严格的全局排名。</view>
+    <view class="adBtn">
+      <my-button wx:if="{{mode==='compute'}}" size="mini" type="grey" bindtap="onShowAd">干等着无聊，看个6~15秒的广告支持一下</my-button>
+    </view>
+  </block>
+</my-dlg>

@@ -1,0 +1,40 @@
+@import "../common.wxss";
+.box {
+  margin: 1rpx 5rpx;
+  padding: 0 5rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+}
+.right {
+  text-align: right;
+}
+.icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+.title {
+  font-size: 22rpx;
+}
+.score {
+  font-size: 28rpx;
+}
+.btnRemove {
+  margin-left: 5rpx;
+}
+.attrBox {
+  justify-content: flex-end;
+}
+.mtab {
+  margin: 0 2rpx;
+  padding: 0 2rpx;
+  font-size: 24rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+}
+.stab {
+  margin: 0 2rpx;
+  padding: 0 2rpx;
+  font-size: 22rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 3rpx;
+}

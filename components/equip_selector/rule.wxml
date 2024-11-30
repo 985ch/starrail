@@ -1,0 +1,27 @@
+<view class="spc tip">{{rList[selected].tip}}</view>
+<view class="spc">
+  <my-picker class="inline" type="array" list="{{rList}}" value="{{selected}}"  bind:select="onSelRule">
+    <view class="equip box">{{rList[selected].text}}</view>
+  </my-picker>
+  <my-picker wx:if="{{!hideCount}}" class="inline" type="array" list="{{resultList}}" value="{{selResult}}"  bind:select="onSelResult">
+    <view class="equip box">{{resultList[selResult].text}}</view>
+  </my-picker>
+  <my-picker wx:else class="inline" type="array" list="{{sortList}}" value="{{selSort}}"  bind:select="onSelSort">
+    <view class="equip box">{{sortList[selSort].text}}</view>
+  </my-picker>
+</view>
+<view class="spc tip">{{rList[selected].text==='自选词条配装'? '配置其他有效词条，包括速度词条及部分角色的转模词条（如雪衣的击破转增伤）': '配置有效词条，系统将根据有效词条对遗器进行筛选然后进行配装'}}</view>
+<view class="spc" wx:for="{{rList[selected].text==='自选词条配装'?5:2}}" wx:key="index">
+  <view class="inline label">词条</view>
+  <my-picker class="inline" type="array" list="{{attrWords}}" bind:select="onSelAttr" data-index="{{index}}">
+    <view class="attr box">{{attrList[index][0]}}</view>
+  </my-picker>
+  <block wx:if="{{attrList[index][1]}}">
+    <view class="inline label">分值</view>
+    <num-input class="inline box inputBox" max="{{99999}}" value="{{attrList[index][2]}}" data-index="{{index}}" data-type="{{2}}" bind:change="changeAttrValue"></num-input>
+    <view class="inline label">范围</view>
+    <num-input  class="inline box inputBox" max="{{99999}}" value="{{attrList[index][3]}}" data-index="{{index}}" data-type="{{3}}" bind:change="changeAttrValue"></num-input>
+    <view class="inline label">-</view>
+    <num-input  class="inline box inputBox" max="{{99999}}" value="{{attrList[index][4] || 0}}" data-index="{{index}}" data-type="{{4}}" bind:change="changeAttrValue"></num-input>
+  </block>
+</view>

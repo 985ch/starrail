@@ -1,0 +1,8 @@
+<!--components/character/reportlabel.wxml-->
+<view>
+  <view class="labelLine">
+    <view class="label">{{label}}</view>
+    <view class="extend">{{extend}}</view>
+  </view>
+  <view class="tip">{{tip}}</view>
+</view>

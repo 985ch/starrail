@@ -1,0 +1,29 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="spaceBox">
+  <view class="inlineBox">
+    <view class="title">{{(!info.group || removable)? (info.group || '本地队伍'):(damage? '轮均:' + damage : '无战斗记录')}}</view>
+    <icon wx:if="{{info.group}}" type="download" size="{{14}}" color="lightgray"></icon>
+    <view wx:if="{{info.group}}" class="tip">{{info.down}}</view>
+  </view>
+  <view class="inlineBox">
+    <block wx:if="{{info.group}}">
+      <my-button wx:if="{{removable}}" class="btn" size="mini" type="grey" left bindtap="onDelete">删除</my-button>
+      <my-button class="btn" size="mini" type="green" left="{{!removable}}"  bindtap="onShare">复制</my-button>
+      <my-button class="btn rSpace" size="mini" right bindtap="onDownload">下载</my-button>
+    </block>
+    <my-button class="btn rSpace" wx:else size="mini" left right bindtap="onUpload">上传</my-button>
+  </view>
+</view>
+<view class="lineBox bottomLine">
+  <view wx:for="{{info.info}}" wx:key="index" class="charBox">
+    <view class="iconBox">
+      <image src="{{images[item.name]}}" class="icon"></image>
+      <view wx:if="{{item.soul!==0}}" class="soul">{{item.soul}}</view>
+    </view>
+    <view class="intro">
+      <view class="{{rarities[item.weapon]}}">{{item.weapon? item.weapon+'('+item.wStar+')':'- 无 -'}}</view>
+      <view>{{item.eInfo}}</view>
+      <view>速度:{{filter.toFix(item.speed,1,false)}}</view>
+    </view>
+  </view>
+</view>

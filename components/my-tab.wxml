@@ -1,0 +1,6 @@
+<!--components/my-tab.wxml-->
+<view class="tabContainer">
+  <view class="tab {{selected === index?'tabSelected':''}}" style="width:{{(100/tabs.length) + '%'}}"
+    wx:for="{{tabs}}" wx:for-index="index" wx:key="index" wx:for-item="item"
+    data-value="{{item.value}}" data-index="{{index}}" bindtap="onTap">{{item.text}}</view>
+</view>

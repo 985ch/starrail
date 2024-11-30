@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "type-input": "/components/type-input"
+  }
+}

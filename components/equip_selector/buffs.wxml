@@ -1,0 +1,13 @@
+<view class="spaceBox buffLine {{index%2===1?'greyLine':''}}" wx:for="{{buffs}}" wx:key="index">
+  <view class="spc">
+    <view class="inline setName">{{item.set}}</view>
+    <view class="inline box buff">{{item.text}}</view>
+  </view>
+  <view class="spc">
+    <my-button class="inline buffBtn" size="mini" type="{{item.value===0?'grey':'normal'}}" left right
+      bindtap="onBuffChange" data-index="{{index}}">{{item.value>0? (item.max>1? '叠' + item.value: '开启'): '关闭'}}</my-button>
+  </view>
+</view>
+<view class="spc setName" wx:if="{{buffs.length===0}}">
+  没有需要额外配置的状态
+</view>

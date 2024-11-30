@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "info-box": "/components/character/info",
+    "my-dlg": "/components/my-dlg",
+    "header": "/components/header",
+    "footer": "/components/footer"
+  }
+}

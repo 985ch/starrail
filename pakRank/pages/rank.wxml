@@ -1,0 +1,70 @@
+<header title="配队广场" evt="{{evt}}" bind:showAd="onShowAds"></header>
+<view class="container">
+  <view class="lineBox">
+    <view class="label {{viewMode==='fav'?'selected':''}}" data-mode="fav" bindtap="onChangeMode">热门配队</view>
+    <view class="label {{viewMode==='search'?'selected':''}}" data-mode="search" bindtap="onChangeMode">搜索配队</view>
+    <view class="label {{viewMode==='my'?'selected':''}}" data-mode="my" bindtap="onChangeMode">我的队伍</view>
+    <view class="fillRight">
+    </view>
+  </view>
+  <view wx:if="{{viewMode==='fav'}}" class="fullLine">
+    <view class="spaceBox">
+      <view class="topSpace">
+        <view class="inline title">选择分组:</view>
+        <view class="inline selectBox" bindtap="selectGroup">{{curGroup}}</view>
+      </view>
+      <my-button class="btnRight" size="mini" left right bindtap="onReload">刷新</my-button>
+    </view>
+    <view class=" bottomLine tip">
+      <view>* 下载队伍需要消耗1积分，刷新列表需要间隔5分钟</view>
+      <view>* 所有队伍均未经验证，排序由下载次数决定，上传者的下载不记次数</view>
+    </view>
+    <view wx:if="{{favList && favList.length > 0}}">
+      <data-box wx:for="{{favList}}" wx:key="index" info="{{item}}" bind:download="onDownloadTeam"></data-box>
+    </view>
+    <view wx:else class="empty bottomLine">当前分组下暂无队伍</view>
+  </view>
+  <view wx:elif="{{viewMode==='search'}}" class="fullLine">
+    <view class="inlineBox topSpace">
+      <view class="radioBox {{searchMode==='name'?'checked':''}}"></view>
+      <view data-value="name" class="radioText {{searchMode!=='name'?'gray':''}}" bindtap="onSearchMode">按分组和成员搜索</view>
+      <view class="radioBox {{searchMode==='id'?'checked':''}}"></view>
+      <view data-value="id" class="radioText {{searchMode!=='id'?'gray':''}}" bindtap="onSearchMode">按完整ID搜索</view>
+    </view>
+    <block wx:if="{{searchMode==='id'}}">
+      <input class="inputBox" placeholder="请输入队伍ID" value="{{teamId}}" bindinput="onInput"></input>
+      <view class="tip">* ID由字母和数字组成，不区分大小写，长度为6位</view>
+    </block>
+    <block wx:else>
+      <view class="topSpace">
+        <view class="inline title">选择分组:</view>
+        <view class="inline selectBox" bindtap="selectGroup">{{curGroup}}</view>
+      </view>
+      <view>
+        <view class="inline title">选择角色:</view>
+        <selector wx:for="{{4}}" wx:key="index" class="inline selectBox" index="{{index}}" char="{{members[index] || '不限制'}}" bind:select="onSelectMember"></selector>
+      </view>
+      <view class="tip">* 角色顺序并不影响搜索结果</view>
+    </block>
+    <view class="tip">* 下载队伍需要消耗1积分，每30秒只能搜索一次</view>
+    <my-button bindtap="onSearch">{{results?'重新搜索':'开始搜索'}}</my-button>
+    <view class="empty bottomLine">{{results? '共有'+count+'条记录': '尚未开始搜索'}}</view>
+    <view wx:if="{{results && results.length > 0}}">
+      <data-box wx:for="{{results}}" wx:key="index" info="{{item}}" bind:download="onDownloadTeam"></data-box>
+      <my-button wx:if="{{results.length < count}}" type="grey" bindtap="onNextPage">继续加载({{results.length}}/{{count}})</my-button>
+    </view>
+  </view>
+  <view wx:else class="fullLine">
+    <view class="topSpace bottomLine">
+      <view class="tip">* 同时最多上传20个队伍，上传不消耗积分，下载队伍消耗1积分</view>
+      <view class="tip">* 为节省服务器资源，过期的分组及队伍会被定期清理</view>
+      <view class="tip">* 若只想备份个人数据，建议用队伍配置页面的数据管理模块</view>
+    </view>
+    <data-box wx:if="{{myTeam}}" info="{{myTeam}}" bind:upload="onUploadTeam"></data-box>
+    <block wx:if="{{myList && myList.length > 0}}">
+      <data-box wx:for="{{myList}}" wx:key="index" info="{{item}}" removable bind:delete="onDeleteTeam" bind:download="onDownloadTeam"></data-box>
+    </block>
+  </view>
+</view>
+<footer></footer>
+<my-picker show="{{showGroupPicker}}" type="array" list="{{groups || []}}" bind:select="onSelectGroup"></my-picker>

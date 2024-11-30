@@ -1,0 +1,29 @@
+@import "../common.wxss";
+.dataBox {
+  text-align: center;
+}
+.title {
+  font-size:32rpx;
+}
+.speedLine {
+  font-size: 22rpx;
+  display: flex;
+  height: 28rpx;
+}
+.speedBox {
+  width: 20%;
+}
+.spdText {
+  display: inline-block;
+  padding: 1rpx;
+}
+.spdCmp {
+  display: inline-block;
+  font-size: 18rpx;
+}
+.red {
+  color:red;
+}
+.green {
+  color:green;
+}

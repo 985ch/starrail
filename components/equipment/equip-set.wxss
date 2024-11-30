@@ -1,0 +1,16 @@
+@import "../common.wxss";
+.simpleBox {
+  margin-right:10rpx;
+}
+.title {
+  font-size: 22rpx;
+  height: 30rpx;
+  text-align: center;
+}
+.scoreText {
+  font-size: 28rpx;
+  text-align: center;
+}
+.miniBtn {
+  width: 50%;
+}

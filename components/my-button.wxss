@@ -1,0 +1,76 @@
+/* components/my-button.wxss */
+.btn {
+  text-align: center;
+  border: 1rpx solid;
+}
+.normal {
+  background-color: dodgerblue;
+  border-color: rgb(47, 151, 255);
+  color:white;
+}
+.normalHover {
+  background-color: rgb(0, 93, 187);
+  border-color: dodgerblue;
+  color:lightgray;
+}
+.green {
+  background-color: rgb(0, 199, 50);
+  border-color: rgb(0, 223, 56);
+  color:white;
+}
+.greenHover {
+  background-color: rgb(0, 150, 37);
+  border-color: rgb(0, 202, 51);
+  color:white;
+}
+.red {
+  background-color: red;
+  border-color: rgb(255, 131, 131);
+  color:white;
+}
+.redHover {
+  background-color: rgb(190, 0, 0);
+  border-color: red;
+  color:lightgray
+}
+.grey {
+  background-color: lightgrey;
+  border-color: lightgrey;
+  color:black;
+}
+.greyHover {
+  background-color: rgb(168, 168, 168);
+  border-color: lightgrey;
+  color:black;
+}
+.disable {
+  background-color: white;
+  border-color: lightgrey;
+  color:darkgray;
+}
+.disableHover {
+  background-color: white;
+  border-color: lightgrey;
+  color:darkgray;
+}
+
+.large {
+  font-size: 46rpx;
+  padding: 12rpx 12rpx;
+}
+.medium {
+  font-size: 36rpx;
+  padding: 10rpx 10rpx;
+}
+.mini {
+  font-size: 24rpx;
+  padding: 3rpx 10rpx;
+}
+.left {
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.right {
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}

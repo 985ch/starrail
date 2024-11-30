@@ -1,0 +1,40 @@
+<view class="borderBox">
+  <view class="spaceBox bottomLine">
+    <view class="labelText">遗器提升计算</view>
+    <view class="tagBtn" bindtap="onSwitchRule">{{hideRule?'展开面板':'收起面板'}}</view>
+  </view>
+  <block wx:if="{{!hideRule}}">
+    <rule-box name="{{charName}}" rule="{{rule}}" attrs="{{attrs}}" hideCount bind:change="onSettingChange"></rule-box>
+    <view class="miniTip">若忽略套装效果，则只按照遗器词条计算分数，同时提升期望也会和实际提升数值不符</view>
+    <view class="buffBox" bindtap="onSwapIgnoreBuff">{{ignoreBuff?'忽略套装效果':'计算套装效果'}}</view>
+  </block>
+  <view class="topSpace"> 
+    <my-button left right bindtap="onComputeBtn">{{buttonText}}</my-button>
+  </view>
+</view>
+<view class="borderBox">
+  <view class="labelText">遗器提升排行</view>
+  <view class="lineBox">
+    <view class="partBox {{partFilter[index]?'checked':''}}" wx:for="{{partList}}" wx:key="index" data-index="{{index}}" bindtap="onSwitchPart">{{item.value}}</view>
+  </view>
+  <view class="lineBox">
+    <view style="width:35%;padding:5rpx">
+      <view class="filterBtn" bindtap="onSwitchMaxLevel">{{withMaxLevel?'包括满级遗器':'排除满级遗器'}}</view>
+    </view>
+    <my-picker style="width:65%" type="array" list="{{setNameList}}" value="{{selSetName}}" bind:select="onSelectSet">
+      <my-label label="套装" labelwidth="2">{{setNameList[selSetName]}}</my-label>
+    </my-picker>
+  </view>
+  <view wx:if="{{equips.length===0}}" class="emptyText">尚未计算遗器排行</view>
+  <recycle-view wx:else class="borderBox scrollBox" batch="{{batchSetRecycleData}}" id="equipsList" width="{{scrollWidth}}" height="{{scrollHeight}}">
+    <recycle-item wx:for="{{equipList}}" wx:key="index">
+      <equip-score einfo="{{item}}" avg="{{curScore>0? item.avg/curScore: item.avg}}" max="{{curScore>0? item.max/curScore: item.max}}"
+        win="{{item.win}}" bind:select="onEquipResults"></equip-score>
+    </recycle-item>
+  </recycle-view>
+  <view class="topSpace"> 
+    <my-button left right bindtap="onResetEquips">还原遗器设置</my-button>
+  </view>
+</view>
+<equip-results show="{{showResultsDlg}}" equip="{{curEquip}}" info="{{curResults}}" needSave="{{equipChanged}}"
+  bind:try="onTryEquip" bind:upgrade="onUpgradeEquip" bind:save="onSaveEquip"></equip-results>

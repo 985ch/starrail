@@ -1,0 +1,50 @@
+.spc {
+  font-size: 28rpx;
+  margin: 3rpx 10rpx;
+}
+.btmSpc {
+  margin-bottom: 15rpx;
+}
+.label {
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}
+.tip {
+  font-size: 18rpx;
+  color: darkgray;
+}
+.equip {
+  width: 300rpx;
+}
+.box {
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  text-align: center;
+  margin: 1rpx;
+}
+.attr {
+  width: 120rpx;
+}
+.inputBox {
+  width: 100rpx;
+  vertical-align: bottom;
+}
+.title {
+  font-size: 28rpx;
+  padding: 2rpx 10rpx;
+}
+.btmSpc {
+  margin-bottom: 15rpx;
+}
+.stepBox {
+  color: lightgray;
+  width: 22%;
+}
+.check {
+  width: 300rpx;
+}
+.checked {
+  border-color: dodgerblue;
+  background-color: dodgerblue;
+  color: white;
+}

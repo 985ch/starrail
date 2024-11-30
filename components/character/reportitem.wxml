@@ -1,0 +1,108 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="spaceBox" wx:if="{{item.type === 'damage'}}">
+  <report-label label="{{item.name || ''}}" tip="{{(item.brkDmg?'削韧'+filter.toFix(item.brkDmg, 1, false)+'。':'') + (item.tip || '')}}"
+    extend="{{item.hitRate ? filter.toFix(item.hitRate, 1, true) : ''}}"></report-label>
+  <view class="dataBox">
+    <number-label width="long" label="{{item.criDamage?'全不暴击':'伤害'}}" value="{{item.damage}}" compare="{{item.c_damage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    <number-label width="long" wx:if="{{item.criDamage}}" label="全部暴击" value="{{item.criDamage}}" compare="{{item.c_criDamage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    <number-label width="long" label="期望伤害" value="{{item.expDamage}}" compare="{{item.c_expDamage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'dot'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" extend="{{item.hitRate ? filter.toFix(item.hitRate, 1, true) : ''}}"></report-label>
+  <view class="dataBox">
+    <number-label wx:if="{{item.turn>0}}" width="long" label="持续回合" value="{{item.turn}}" compare="{{item.c_turn}}"></number-label>
+    <number-label width="long" label="单次伤害" value="{{item.damage}}" compare="{{item.c_damage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    <number-label wx:if="{{item.turn>0}}" width="long" label="累计伤害" value="{{item.totalDamage}}" compare="{{item.c_totalDamage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'breakDamage'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" extend="{{item.late>0?'推条'+filter.toFix(item.late,1,true):''}}"></report-label>
+  <view class="dataBox">
+    <number-label wx:if="{{item.dotDamage>0}}" width="long" label="持续伤害" value="{{item.dotDamage}}" compare="{{item.c_dotDamage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    <number-label width="long" wx:if="{{item.maxDamage>0}}" label="持续伤害（满）" value="{{item.maxDamage}}" compare="{{item.c_maxDamage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    <number-label width="long" label="击破伤害" value="{{item.damage}}" compare="{{item.c_damage}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'superBreak'}}">
+  <report-label label="超击破" tip="{{item.tip || ''}}" extend="{{item.char}}"></report-label>
+  <view class="dataBox">
+    <number-label wx:for="{{item.list}}" wx:for-index="idx" wx:for-item="n" wx:key="idx" width="long" label="削韧{{n}}点" value="{{item.damage*n}}" compare="{{item.c_damage*n}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'hit'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label wx:for="{{item.labels}}" wx:for-index="labelIdx" wx:for-item="labelItem" wx:key="labelIdx"
+      label="{{labelItem}}" value="{{item['hit'+labelIdx]}}" compare="{{item['c_hit'+labelIdx]}}" type="percent" fixed="{{2}}"></number-label>
+  </view>
+</view>
+<block wx:elif="{{item.type === 'action'}}">
+  <view class="spaceBox">
+    <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+    <view class="dataBox">
+      <number-label label="行动间隔" value="{{item.wait}}" compare="{{item.c_wait}}" flip type="float" fixed="{{2}}"
+        bind:select="onTapNumber" data-type="{{type}}"></number-label>
+    </view>
+  </view>
+  <view wx:if="{{!item.hideTurn}}" class="speedLine">
+    <view class="speedBox" wx:for="{{5}}" wx:key="actIdx" wx:for-item="actN" wx:for-index="actIdx">
+        <view class="spdText">{{actN===0?'首':actN+1}}轮{{item.acts[actN]}}动</view>
+        <view wx:if="{{item.c_acts[actN]!==0}}" class="spdCmp {{item.c_wait<0?'red':'green'}}">{{item.c_wait<=0? '+': ''}}{{item.c_acts[actN]}}</view>
+    </view>
+  </view>
+</block>
+<view class="spaceBox" wx:elif="{{item.type === 'energy'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label wx:for="{{item.labels}}" wx:for-index="labelIdx" wx:for-item="labelItem" wx:key="labelIdx"
+      label="{{labelItem}}" value="{{item['en'+labelIdx]}}" compare="{{item['c_en'+labelIdx]}}" type="float" fixed="{{2}}"
+      bind:select="onTapNumber" data-type="{{type}}"></number-label>
+  </view>
+</view>
+<block wx:elif="{{item.type === 'defend'}}">
+  <view class="title">承伤比例</view>
+  <number-label wx:for="{{item.labels}}" wx:for-index="labelIdx" wx:for-item="labelItem" wx:key="labelIdx" width="short" flip
+    label="{{labelItem}}" value="{{item['def'+labelIdx]}}" compare="{{item['c_def'+labelIdx]}}" type="percent" fixed="{{2}}"/>
+</block>
+<view class="spaceBox" wx:elif="{{item.type === 'block'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label wx:for="{{item.labels}}" wx:for-index="labelIdx" wx:for-item="labelItem" wx:key="labelIdx"
+      label="{{labelItem}}" value="{{item['block'+labelIdx]}}" compare="{{item['c_block'+labelIdx]}}" type="percent" fixed="{{2}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'dodge'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label label="总概率" value="{{item.dodge}}" compare="{{item.c_dodge}}" type="percent" fiexed="{{2}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'heal'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label wx:for="{{item.labels}}" wx:for-index="labelIdx" wx:for-item="labelItem" wx:key="labelIdx"
+      label="{{labelItem}}" value="{{item['heal'+labelIdx]}}" compare="{{item['c_heal'+labelIdx]}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:elif="{{item.type === 'shield'}}">
+  <report-label label="{{item.name || ''}}" tip="{{item.tip || ''}}" ></report-label>
+  <view class="dataBox">
+    <number-label label="护盾量" value="{{item.shield}}" compare="{{item.c_shield}}"></number-label>
+  </view>
+</view>
+<view class="spaceBox" wx:else>
+  <report-label label="{{item.name || ''}}"></report-label>
+  <view class="dataBox">
+    <number-label label="未知" value="{{0}}" compare="{{0}}"></number-label>
+  </view>
+</view>

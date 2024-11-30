@@ -1,0 +1,8 @@
+<view class="spc">
+  <block wx:for="{{mainParts}}" wx:key="index">
+    <view class="inline label {{index===0?'firstItem':''}}">{{item[0]}}</view>
+    <my-picker class="inline" type="array" list="{{attrList[item[1]] || []}}" bind:select="onSelect" data-part="{{item[1]}}">
+      <view class="attr box">{{main[item[1]][0]}}</view>
+    </my-picker>
+  </block>
+</view>

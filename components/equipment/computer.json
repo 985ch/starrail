@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ai-dlg": "/components/equipment/ai",
+    "equip-set": "/components/equipment/equip-set",
+    "equip-store": "/components/equipment/store"
+  }
+}

@@ -1,0 +1,26 @@
+BTL_S 战斗开始
+RND_S 轮次开始
+WAVE_S 波次开始
+TURN_S 回合开始
+TURN_E 回合结束
+ACT_S 行动开始
+ACT_E 行动结束
+ACT_N 下一个行动（用于取出行动列表中的行动自动执行）
+C_ATK_S 攻击开始
+C_ATK_E 攻击结束
+B_ATK_E
+C_DMG_S 单次伤害/治疗前
+B_DMG_S
+C_DMG_E 单次伤害/治疗后
+B_DMG_E
+C_HIT_S 单段伤害/治疗前
+B_HIT_S
+C_HIT_E 单段伤害/治疗后
+B_HIT_E
+C_KILL 击杀后触发
+B_KILL
+C_BREAK 击破后触发
+B_BREAK
+HP_CHANGE 生命值发生变化后（重置不触发）
+EN_CHANGE 能量发生变化后触发
+REBORN 单位重生时触发

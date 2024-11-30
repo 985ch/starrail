@@ -1,0 +1,10 @@
+<!--components/character/attrbox2.wxml-->
+<view class="box spaceBox {{grey?'greyLine':''}}">
+  <view class="labelBox">
+    <text class="label">{{label}}</text>
+    <text wx:if="{{compare!==0}}" class="addNumber {{color}}">{{compare}}</text>
+  </view>
+  <view class="numberBox">
+    <view class="number">+{{value}}</view>
+  </view>
+</view>

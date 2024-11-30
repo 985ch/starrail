@@ -1,0 +1,46 @@
+@import "../../components/common.wxss";
+.label {
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  line-height: 50rpx;
+}
+.btnBox {
+  height: 70rpx;
+}
+.btnTest {
+  width: 50%;
+}
+.center {
+  text-align: center;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  margin: 10rpx 0;
+}
+.dataBox {
+  width: 50%;
+  padding: 0 1rpx;
+  font-size: 24rpx;
+}
+.center {
+  text-align: center;
+  font-size: 28rpx;
+}
+.dataA {
+  border: 1rpx solid lightgray;
+  padding: 0 5rpx;
+}
+.dataB {
+  background-color: lightgray;
+  border: 1rpx solid lightgray;
+  padding: 0 5rpx;
+}
+.tip {
+  font-size: 24rpx;
+  margin: 2rpx 5rpx;
+}
+.ls {
+  margin-left: 24rpx;
+}

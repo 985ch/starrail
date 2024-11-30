@@ -1,0 +1,59 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<my-dlg show="{{show}}" title="遗器提升详情" cancelText="关闭">
+  <view class="dlgLine">
+    <view class="spaceBox">
+      <view class="inlineBox">
+        <icon equip="{{equip}}"></icon>
+        <view>
+          <view class="tagTip SSR">{{equip.name}}</view>
+          <view class="tagTip">{{equip.level}}级{{mainText}}{{needSave?'(未保存)':''}}</view>
+        </view>
+      </view>
+      <view>
+        <view class="tagTip">平均提升 {{avg<1? filter.toFix(avg*100, 2, true): filter.floor(avg)}}</view>
+        <view class="tagTip">提升概率 {{win<0.0001? '极低': filter.toFix(win*100, 2, true)}}</view>
+      </view>
+    </view>
+    <view class="spaceBox topSpace">
+      <view class="labelText">副词条</view>
+      <view class="labelText">可分配:{{filter.floor((15-equip.level)/3)}}</view>
+    </view>
+    <view class="lineBox">
+      <view class="subBox" wx:for="{{subWords}}" wx:key="index">
+        <view class="inlineBox subWord" wx:if="{{item}}">
+          <view class="tagTip">{{item.tag}}</view>
+          <view class="tagTip miniSpace">{{item.vText}}</view>
+        </view>
+        <view class="subWord" wx:else>-</view>
+      </view>
+    </view>
+    <view class="lineBox newLine">
+      <my-button class="editBtn" type="grey" bindtap="onReset" left>重置遗器</my-button>
+      <my-button class="editBtn" type="green" bindtap="onUpgrade">升级遗器</my-button>
+      <my-button class="editBtn" right bindtap="onSave">保存入库</my-button>
+    </view>
+    <view class="labelText topSpace">结果一览</view>
+    <recycle-view class="borderBox scrollBox" batch="{{batchSetRecycleData}}" id="resultList" width="{{scrollWidth}}" height="{{scrollHeight}}">
+      <recycle-item wx:for="{{resultList}}" wx:key="index">
+        <view class="spaceBox bottomLine viewItem">
+          <view>
+            <view class="inlineBox">
+              <view class="tagTip">提升</view>
+              <view class="tagTip">{{item.up<1? filter.toFix(item.up*100, 2, true): filter.floor(item.up)}}</view>
+              <view class="tagTip leftSpace">概率</view>
+              <view class="tagTip">{{item.rate<0.0001? '极低': filter.toFix(item.rate*100, 2, true)}}</view>
+              <view class="tagTip leftSpace">累计概率</view>
+              <view class="tagTip">{{item.total<0.0001? '极低': filter.toFix(item.total*100, 2, true)}}</view>
+            </view>
+            <view class="inlineBox">
+              <view class="tagTip">词条</view>
+              <view class="wordItem" wx:for="{{item.upgrade}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx">{{itm}}</view>
+            </view>
+          </view>
+          <view class="tryBtn" hover-class="tryBtnH" bindtap="onTry" data-equip="{{item.equip}}">试装</view>
+        </view>
+      </recycle-item>
+    </recycle-view>
+  </view>
+</my-dlg>
+<group-picker show="{{showSelector}}" list="{{subList}}" bind:select="onCompleteUpgrade" value="{{subSel}}"></group-picker>

@@ -1,0 +1,22 @@
+@import "./common.wxss";
+.menuItem {
+  padding: 5rpx 10rpx;
+  width: 250rpx;
+  background-color: white;
+  border: 1rpx solid lightgray;
+  font-size: 36rpx;
+  text-align: center;
+}
+.valueBox {
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 3rpx 10rpx;
+  margin: 3rpx 5rpx 3rpx 0rpx;
+}
+.inputBox {
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: center;
+  height: 39rpx;
+}

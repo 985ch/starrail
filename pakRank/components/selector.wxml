@@ -1,0 +1,3 @@
+<group-picker list="{{charBaseData}}" bind:select="onSelectCharacter">
+  <view>{{char}}</view>
+</group-picker>

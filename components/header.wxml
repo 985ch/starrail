@@ -1,0 +1,36 @@
+<view class="spaceBox">
+  <view>
+    <view class="title">{{title}}</view>
+    <my-menu class="inline topButton" position="left" offset="40rpx" animate="top">
+      <my-button slot="button" size="mini" type="grey" left right>切换页面</my-button>
+      <view slot="menu" class="menuBox">
+        <view class="menu {{index%2===0?'grayLine':''}}" wx:for="{{btnList}}" wx:key="index" data-idx="{{index}}" bindtap="gotoPage">{{item.title}}</view>
+      </view>
+    </my-menu>
+  </view>
+  <view class="inlineBox">
+    <button wx:if="{{!checkedIn}}" bindtap="onCheckIn">签到得积分</button>
+    <button wx:else bindtap="onScoreDlg">积分{{score<0?'':':'+score}}</button>
+    <button open-type="share">分享</button>
+  </view>
+</view>
+<my-dlg show="{{showScoreDlg}}" title="积分系统">
+  <view class="midBox">
+    <view class="borderBox scoreBox">
+      <view class="thank">您的积分</view>
+      <view class="thank score">{{score}}</view>
+    </view>
+    <my-button style="width:600rpx;" left right bindtap="onSupport">观看6~15秒视频广告获取30积分</my-button>
+  </view>
+  <view class="tipTitle topSpace">积分获取</view>
+  <view class="logText">* 每日签到：+5积分</view>
+  <view class="logText">* 观看视频广告：+30积分</view>
+  <view class="tipTitle topSpace">积分消耗</view>
+  <view class="logText">* 同步本地存档到服务器：-20积分</view>
+  <view class="logText">* 从服务器下载已同步的存档：-10积分</view>
+  <view class="logText">* 从配队广场下载队伍数据：-1积分</view>
+  <view class="tipTitle topSpace">关于积分</view>
+  <view class="logText">* 积分系统主要用于避免网络资源的无节制使用，因此本地计算功能均不消耗积分。</view>
+  <view class="logText">* 目前PC端无法正常观看视频广告，也无法通过该渠道获得积分，请用手机端来获取积分。</view>
+  <view class="logText">* 后续将会推出更多有用的积分功能。</view>
+</my-dlg>

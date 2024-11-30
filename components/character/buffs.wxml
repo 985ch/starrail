@@ -1,0 +1,4 @@
+<view wx:if="{{list.length===0}}" class = "item tip">当前未激活任何可选增益和减益效果</view>
+<view wx:for="{{list}}" wx:key="index" class="item {{item.style}}">
+  {{item.text}}{{item.maxValue>1? '(' + item.value + ')' : ''}}
+</view>

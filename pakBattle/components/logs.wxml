@@ -1,0 +1,64 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<recycle-view batch="{{batchSetRecycleData}}" id="showLogs" width="{{scrollWidth}}" height="{{scrollHeight}}" scroll-top="{{top}}">
+  <recycle-item wx:for="{{showLogs}}" wx:key="id">
+    <log log="{{item}}" images="{{images}}" gray="{{index%2===1}}" bind:showLog="onShowLog"></log>
+  </recycle-item>
+</recycle-view>
+<my-dlg show="{{showDlg}}" title="日志详情">
+  <view class="spaceBox bottomLine">
+    <view class="mainBox">
+      <image class="mainIcon" src="{{unit? images[unit]: '/images/base/nobody.png'}}"></image>
+      <view wx:if="{{unit || '-'}}">{{unit}}</view>
+    </view>
+    <view class="titleBox">
+      <view class="miniText">耗时:{{filter.floor(t)}}</view>
+      <view class="round">{{filter.t2r(t, true)}}</view>
+      <view class="actText">{{action}}{{info!==''?'('+info+')':''}}</view>
+      <view class="round">总伤害:{{filter.floor(damage)}}</view>
+      <view class="miniText">第{{count}}/{{stat.count}}次</view>
+    </view>
+    <view class="mainBox">
+      <image class="mainIcon" src="{{target? images[target]: '/images/base/nobody.png'}}"></image>
+      <view>{{target || '-'}}</view>
+    </view>
+  </view>
+  <view class="lineBox bottomLine">
+    <view class="statBox">
+      <view class="attrLabel">总治疗量</view>
+      <view class="attr heal">{{filter.floor(heal)}}</view>
+    </view>
+    <view class="statBox">
+      <view class="attrLabel">本次期望伤害</view>
+      <view class="attr red">{{filter.floor(expDamage)}}</view>
+    </view>
+    <view class="statBox">
+      <view class="attrLabel">本场战斗最低</view>
+      <view class="attr red">{{filter.floor(stat.minDamage)}}</view>
+    </view>
+    <view class="statBox">
+      <view class="attrLabel">本场战斗最高</view>
+      <view class="attr red">{{filter.floor(stat.maxDamage)}}</view>
+    </view>
+  </view>
+  <view wx:for="{{units}}" wx:key="index" class="lineBox bottomLine">
+    <view class="unitBox">
+      <image class="icon {{item.data.death?'dead':''}}" src="{{images[item.name]}}"></image>
+      <view wx:if="{{item.idx>0}}" class="enemyIdx">{{item.idx}}</view>
+    </view>
+    <view class="fillRight">
+      <view class="bottomLine tagLine">
+        <view wx:if="{{item.heal>0}}" class="inlineBox tag heal">+{{filter.floor(item.heal)}}</view>
+        <view wx:if="{{item.damage>0}}" class="inlineBox tag red">-{{filter.floor(item.damage)}}({{filter.floor(item.expDamage)}})</view>
+        <view wx:for="{{item.tags}}" wx:for-index="idx" wx:for-item="tag" wx:key="idx" class="inlineBox buff {{tag.class}}">
+          {{tag.text}}
+        </view>
+      </view>
+      <view class="tagLine">
+        <view wx:for="{{item.data.tags}}" wx:for-index="idx" wx:for-item="tag" wx:key="idx" wx:if="{{tag.t!=='buff'}}"
+          class="inlineBox dmg {{tag.t==='dmg'? 'dmg'+tag.dType: 'heal'}}">
+          {{tag.t==='dmg'?'-' + filter.floor(tag.dmg): '+'+filter.floor(tag.heal)}}{{tag.unit?'('+tag.unit+')':''}}
+        </view>
+      </view>
+    </view>
+  </view>
+</my-dlg>

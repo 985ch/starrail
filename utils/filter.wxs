@@ -1,0 +1,39 @@
+function toFix(value, n, showPercent) {
+  var a = Math.pow(10, n);
+  return (Math.floor(value*a)/a).toFixed(n) + (showPercent ? '%': '');
+}
+function floor(value) {
+  return Math.floor(value);
+}
+function j2t(value) {
+  return JSON.stringify(value);
+}
+function cmpText(val, isInt) {
+  var num = isInt? Math.floor(val) : val.toFixed(2);
+  return val > 0? '+' + num :(val===0? '-' : num)
+}
+function cmpStyle(val) {
+  return val>0? 'red':(val===0?'':'green');
+}
+// 缩短数字显示
+function shortNumber(num, limit = 100000) {
+  if(num < limit) return Math.floor(num);
+  return Math.floor(num/1000) + 'k';
+}
+// 时间转换成轮加时间的显示方式
+function turn2round(t, fullText) {
+  var r = t < 150? 0: Math.floor((t-50)/100);
+  var a = t < 150? t: t - (r * 100)-50;
+  if(fullText) return '第' + r + '轮+' + Math.floor(a);
+  if(r > 0) return r + '+' + Math.floor(a);
+  return Math.floor(a);
+}
+module.exports = {
+  toFix: toFix,
+  floor: floor,
+  j2t: j2t,
+  cmpText: cmpText,
+  cmpStyle: cmpStyle,
+  shortNumber: shortNumber,
+  t2r: turn2round,
+}

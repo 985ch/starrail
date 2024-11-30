@@ -1,0 +1,6 @@
+<view class="{{mini?'miniBox':'itemBox'}} {{selected?'selected':''}} {{equip.locked?'locked':''}}">
+  <image class="iconImg bg{{equip.rarity}}" src="{{image}}"></image>
+  <view wx:if="{{equip.locked}}" class="tagLock">锁</view>
+  <view wx:if="{{showTag}}" class="tagLevel">+{{equip.level}}</view>
+  <view wx:if="{{showTag}}" class="tagMain">{{attrText}}</view>
+</view>

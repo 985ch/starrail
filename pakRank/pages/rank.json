@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "header": "/components/header",
+    "footer": "/components/footer",
+    "data-box": "/pakRank/components/data-box",
+    "my-picker": "/components/my-picker",
+    "selector": "/pakRank/components/selector"
+  }
+}

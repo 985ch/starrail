@@ -1,0 +1,78 @@
+@import "../../components/common.wxss";
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items:start;
+}
+.label {
+  color: darkgray;
+  font-size: 28rpx;
+  padding: 5rpx 20rpx;
+  border-bottom: 1rpx solid lightgray;
+}
+.selected {
+  border-top: 1rpx solid lightgray;
+  border-left: 1rpx solid lightgray;
+  border-right: 1rpx solid lightgray;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  border-bottom: 0;
+  color: black;
+}
+.fillRight {
+  flex-grow: 1;
+  border-bottom: 1rpx solid lightgray;
+}
+.empty {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: darkgray;
+}
+.title {
+  font-size: 28rpx;
+  padding: 0 5rpx;
+}
+.selectBox {
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+  padding: 0 10rpx;
+  margin: 3rpx;
+}
+.btnRight {
+  margin-right: 5rpx;
+  width: 80rpx;
+}
+.tip {
+  font-size: 22rpx;
+  margin: 0 5rpx;
+  color: red;
+}
+.radioBox {
+  width: 18rpx;
+  height: 18rpx;
+  background-color: lightgray;
+  border-radius: 50%;
+  margin-left: 15rpx;
+}
+.checked {
+  background-color:rgb(26, 224, 0);
+  color: white;
+}
+.radioText {
+  font-size: 28rpx;
+  padding: 5rpx 10rpx 5rpx 10rpx;
+}
+.inputBox {
+  padding: 2rpx 10rpx;
+  margin: 20rpx 10rpx 0 10rpx;
+  border: 1rpx solid lightgray;
+  font-size: 32rpx;
+}
+button {
+  font-size: 26rpx;
+  padding: 5rpx 15rpx;
+  line-height: 38rpx;
+  margin: 2rpx 5rpx;
+  background-color: lightgrey;
+}

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-label": "/components/my-label",
+    "num-input": "/components/num-input",
+    "group-picker": "/components/group-picker",
+    "my-picker": "/components/my-picker",
+    "enemies-dlg": "/components/team/enemies"
+  }
+}

@@ -1,0 +1,36 @@
+<view wx:if="{{mode==='full'}}" class="equipBox">
+  <view class="spaceBox" wx:for="{{partList}}" wx:key="index" wx:for-index="index" wx:for-item="subList">
+    <ebox class="ebox" wx:for="{{subList}}" wx:key="idx" wx:for-index="idx"
+      part="{{item}}" equipment="{{equipJson[item] || null}}" bind:select="onSelect"></ebox>
+  </view>
+</view>
+<block wx:else>
+  <view class="lineBox">
+    <view class="simpleBox" wx:for="{{partList}}" wx:key="index" wx:for-item="subList">    
+      <equip-icon wx:for="{{subList}}" wx:key="idx" wx:for-key="idx" equip="{{equipJson[item] || null}}" showTag></equip-icon>
+    </view>
+    <view  class="borderBox fillBox">
+      <view class="miniSetBox">
+        <view class="miniSet" wx:for="{{setDesc}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{attr}}" class="lineBox">
+    <view class="attrBox {{idx!==attrKeys.length-1?'rightLine':''}}" wx:for="{{3}}" wx:for-item="i" wx:for-index="idx" wx:key="idx">
+      <view wx:for="{{4}}" wx:key="index">
+        <attr-box2 attr="{{attrKeys[i*4+index]}}" value1="{{attr[attrKeys[i*4+index]]}}" value2="{{cAttr? cAttr[attrKeys[i*4+index]] : attr[attrKeys[i*4+index]]}}" grey="{{index%2===1}}"></attr-box2>
+      </view>
+    </view>
+  </view>
+  <view class="inline labelText">副词条数量</view>
+  <view>
+    <view class="inline attrTag" wx:for="{{attrRank}}" wx:key="index" wx:if="{{item.count>0 || item.cc}}">
+      <text>{{extText[item.key] || ''}}{{attributeText[item.key].short}}</text>
+      <text class="cmpText {{item.cc>0?'red':'green'}}" wx:if="{{item.cc!==0}}">{{item.cc>0?'+':''}}{{item.cc}}</text>
+      <text> {{item.count}}</text>
+    </view>
+  </view>
+</block>
+<view class="introBox" wx:if="{{mode==='full'}}">
+  <view class="tip" wx:for="{{setDescFull}}" wx:key="index">{{item}}</view>
+</view>

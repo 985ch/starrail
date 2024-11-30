@@ -1,0 +1,41 @@
+@import "../common.wxss";
+.ebox {
+  width: 32%;
+  margin-right: 5rpx;
+}
+.equipBox {
+  padding: 0 5rpx;
+}
+.attrTag {
+  border:1rpx solid lightgray;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+  padding: 1rpx 5rpx;
+  margin: 0 1rpx;
+}
+.introBox {
+  font-size: 24rpx;
+}
+.attrBox {
+  width:33%;
+  border-top: 1rpx solid lightgray;
+}
+.rightLine {
+  border-right: 1rpx solid lightgray;
+  margin-right: 1rpx;
+}
+.simpleBox {
+  margin-right:10rpx;
+}
+.miniSet {
+  font-size: 22rpx;
+  display: inline-block;
+  margin-left: 10rpx;
+}
+.miniSetBox {
+  max-width: 225rpx;
+  line-height: 30rpx;
+}
+.cmpText {
+  font-size: 20rpx;
+}

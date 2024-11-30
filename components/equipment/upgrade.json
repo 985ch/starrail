@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "rule-box": "/components/equip_selector/rule",
+    "recycle-view": "miniprogram-recycle-view/recycle-view",
+    "recycle-item": "miniprogram-recycle-view/recycle-item",
+    "equip-score": "/components/equipment/equip-score",
+    "equip-results": "/components/equipment/equip-results",
+    "my-label": "/components/my-label",
+    "my-picker": "/components/my-picker"
+  }
+}

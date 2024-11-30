@@ -1,0 +1,29 @@
+.left {
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.right {
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.checkBox {
+  text-align: center;
+}
+.normalSize {
+  padding: 5rpx;
+  font-size: 36rpx;
+}
+.miniSize {
+  padding: 10rpx 5rpx;
+  font-size: 24rpx;
+}
+/* normal */
+.normalChecked {
+  background-color:dodgerblue;
+  color:azure;
+  border: 1rpx solid rgb(47, 151, 255);
+}
+.normal {
+  border: 1rpx solid lightgrey;
+  color:lightgray;
+}

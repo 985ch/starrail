@@ -1,0 +1,34 @@
+@import "../common.wxss";
+.itemBox {
+  padding: 10rpx 5rpx;
+}
+.leftItem {
+  font-size: 36rpx;
+  vertical-align: bottom;
+}
+.mainText {
+  font-size: 28rpx;
+}
+.greyLine {
+  background-color: rgb(235, 235, 235);
+}
+.rightItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.mainBox {
+  margin: 5rpx 10rpx;
+}
+.item {
+  flex-grow: 1;
+}
+.input {
+  font-size: 36rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+  padding: 12rpx;
+}
+.tip {
+  font-size: 24rpx;
+}

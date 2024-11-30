@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-dlg":"/components/my-dlg",
+    "my-menu":"/components/my-menu",
+    "my-tab":"/components/my-tab",
+    "my-picker":"/components/my-picker",
+    "ai-action":"/pakBattle/components/aiaction"
+  }
+}

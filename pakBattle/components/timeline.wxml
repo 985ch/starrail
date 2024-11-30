@@ -1,0 +1,72 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="spaceBox bottomLine">
+  <view class="label">本次行动</view>
+  <view class="inlineBox">
+    <view class="center">
+      <view class="miniText">时间/战技点</view>
+      <view class="miniText">/累计期望伤害</view>
+    </view>
+    <view class="label">序号</view>
+    <view class="center">
+      <view class="miniText">时间/战技点</view>
+      <view class="miniText">/累计期望伤害</view>
+    </view>
+  </view>
+  <view class="label">参考排轴</view>
+</view>
+<recycle-view batch="{{batchSetRecycleData}}" id="showList" width="{{scrollWidth}}" height="{{scrollHeight}}" scroll-top="{{top}}">
+  <recycle-item wx:for="{{showList}}" wx:key="id">
+    <action data="{{item}}" index="{{index}}" images="{{images}}" selected="{{selAction===index}}" gray="{{index%2===0}}" data-index="{{index}}" bindtap="onSelect"></action>
+  </recycle-item>
+</recycle-view>
+<view class="lineBox btnBox">
+  <my-button class="btnTest" left type="grey" bindtap="getReport">评估参考轴</my-button>
+  <my-button class="btnTest" right bindtap="onTest">重现参考轴</my-button>
+</view>
+<my-dlg show="{{showDlg}}" title="参考轴评估">
+  <view class="title" wx:if="{{process<100}}">
+    <view>计算中</view>
+    <view>当前进度：{{process}}%</view>
+    <progress percent="{{process}}"></progress>
+  </view>
+  <view wx:else>
+    <view class="title">完成率：{{results[0].count}}%</view>
+    <view class="lineBox">
+      <view class="dataBox" wx:for="{{results}}" wx:key="index">
+        <view class="data{{dataIdx[index][0]}} center">{{index===0?'成功':'失败'}}{{item.count}}次</view>
+        <view class="data{{dataIdx[index][1]}} spaceBox">
+          <view>最小步数</view>
+          <view>{{item.minStep}}</view>
+        </view>
+        <view class="data{{dataIdx[index][0]}} spaceBox">
+          <view>最大步数</view>
+          <view>{{item.maxStep}}</view>
+        </view>
+        <view class="data{{dataIdx[index][1]}} spaceBox">
+          <view>平均步数</view>
+          <view>{{item.count>0? filter.toFix(item.totalStep/item.count, 2, false): 0}}</view>
+        </view>
+        <view class="data{{dataIdx[index][0]}} spaceBox">
+          <view>最小伤害</view>
+          <view>{{filter.floor(item.minDmg)}}</view>
+        </view>
+        <view class="data{{dataIdx[index][1]}} spaceBox">
+          <view>最大伤害</view>
+          <view>{{filter.floor(item.maxDmg)}}</view>
+        </view>
+        <view class="data{{dataIdx[index][0]}} spaceBox">
+          <view>平均伤害</view>
+          <view>{{item.count>0? filter.floor(item.totalDmg/item.count): 0}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="tip">计算规则:</view>
+  <view class="tip">* 复现时角色行动顺序将和参考轴一致，但行动时间可能不同。</view>
+  <view class="tip">* 即使角色速度与参考轴不同，仍有可能复现成功。</view>
+  <view class="tip">* 本界面伤害数据均为计算暴击之后的实际伤害，并非期望伤害。</view>
+  <view class="tip">* 当角色无法复现参考轴动作时，将根据情况导致不同的结果：</view>
+  <view class="tip ls">若敌方全灭，则本次复现判定为提前成功。</view>
+  <view class="tip ls">若指定目标已倒下，则更改目标并继续复现操作。</view>
+  <view class="tip ls">除以上两种情况外，本次复现判定为已失败。</view>
+</my-dlg>

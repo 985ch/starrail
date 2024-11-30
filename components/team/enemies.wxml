@@ -1,0 +1,33 @@
+<my-dlg show="{{show}}" title="木桩配置管理">
+  <view class="container">
+    <view class="spaceBox bottomLine">
+      <view class="label">自定义配置</view>
+      <view>
+        <my-button class="inline miniBtn" size="mini" left bindtap="onExport">导出</my-button>
+        <my-button class="inline miniBtn" size="mini" bindtap="onImport">导入</my-button>
+        <my-button class="inline miniBtn" size="mini" right bindtap="onSave">保存</my-button>
+      </view>
+    </view>
+    <view wx:if="{{myList.length===0}}" class="item label">尚未保存自定义配置</view>
+    <view class="spaceBox item {{index%2===1? 'bgGrey': ''}}" wx:for="{{myList}}" wx:key="index">
+      <view class="left">
+        <view class="mainText">{{item.text}}</view>
+      </view>
+      <view class="right">
+        <my-button class="inline miniBtn"  size="mini" type="red" bindtap="onDelete" left data-index="{{index}}">删除</my-button>
+        <my-button class="inline miniBtn"  size="mini" bindtap="onLoadData" right data-item="{{item}}">加载</my-button>
+      </view>
+    </view>
+    <view class="lineBox bottomLine">
+      <view class="label">系统配置</view>
+    </view>
+    <view class="spaceBox item  {{index%2===1? 'bgGrey': ''}}" wx:for="{{defList}}" wx:key="index">
+      <view class="left">
+        <view class="mainText">{{item.text}}</view>
+      </view>
+      <view class="right">
+        <my-button class="miniBtn" size="mini" left right bindtap="onLoadTeam" data-item="{{item}}">加载</my-button>
+      </view>
+    </view>
+  </view>
+</my-dlg>

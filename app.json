@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pakBattle",
+      "pages": [
+        "pages/battle"
+      ]
+    },
+    {
+      "root": "pakRank",
+      "pages": [
+        "pages/rank"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index": {
+      "network": "all",
+      "packages": ["pakBattle","pakRank"]
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "黑塔配装助手",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "my-button": "/components/my-button"
+  },
+  "renderer": "webview",
+  "rendererOptions": {},
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "workers": "workers"
+}

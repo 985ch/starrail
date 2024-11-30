@@ -1,0 +1,67 @@
+@import "../common.wxss";
+.scrollBox {
+  width: 490rpx;
+  height: 360rpx;
+}
+.rightBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.eBox {
+  width:95%;
+}
+.partBtn {
+  width: 16.67%;
+  text-align: center;
+  border: 1rpx solid lightgray;
+  font-size: 28rpx;
+  color: darkgray;
+  padding: 5rpx 0;
+}
+.activated {
+  border-color: dodgerblue;
+  background-color: dodgerblue;
+  color: white;
+}
+.addBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:rgb(128, 128, 128);
+  font-size: 28rpx;
+}
+.itemBox {
+  display: inline-block;
+  vertical-align: middle;
+  height: 74rpx;
+  width: 74rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 10rpx;
+  position: relative;
+  margin: 1rpx 1rpx;
+  overflow: hidden;
+}
+.btnBox {
+  margin: 5rpx 0;
+  width: 98%;
+}
+.mainBox {
+  margin: 2rpx 5rpx;
+}
+.importBtn {
+  flex-grow: 1;
+}
+.fullBtn {
+  margin-top: 10rpx;
+}
+.tip {
+  font-size: 24rpx;
+}
+.newLine {
+  margin-top: 20rpx;
+}

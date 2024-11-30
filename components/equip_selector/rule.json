@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "num-input": "/components/num-input",
+    "my-picker": "/components/my-picker"
+  }
+}

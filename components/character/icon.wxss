@@ -1,0 +1,66 @@
+@import "../common.wxss";
+.imgBox {
+  margin: 1rpx 5rpx;
+  border: 1rpx solid lightgray;
+  position: relative;
+  overflow: hidden;
+}
+.normalSize {
+  border-radius: 5rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+.miniSize {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0;
+}
+.charImg {
+  width: 100%;
+  height: 100%;
+}
+.ltBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightgray;
+  border-bottom-right-radius: 10rpx;
+  padding-right: 5rpx;
+  font-size: 20rpx;
+}
+.rtBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: lightgray;
+  border-bottom-left-radius: 10rpx;
+  padding: 1rpx 12rpx;
+  font-size: 32rpx;
+  opacity: 0.8;
+}
+.lbBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: lightgray;
+  border-top-right-radius: 10rpx;
+  padding-right: 5rpx;
+  font-size: 20rpx;
+  opacity: 0.9;
+}
+.rbBox {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: lightgray;
+  border-top-left-radius: 10rpx;
+  padding-left: 5rpx;
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+.miniSoul {
+  font-size:24rpx;
+}
+.bgInvaild {
+  background-color: rgb(220, 220, 220);
+}

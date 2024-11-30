@@ -1,0 +1,6 @@
+<view class="imgBox {{mini?'miniSize':'normalSize'}}">
+  <image class="charImg bg{{rarity}}" src="{{charImage}}"></image>
+  <view wx:if="{{index}}" class="ltBox">{{index}}号位</view>
+  <view wx:if="{{character && character.soul>0}}" class="rtBox {{mini?'miniSoul':''}}">{{character.soul}}</view>
+  <view wx:if="{{character}}" class="rbBox">{{mini?'Lv':'等级'}}{{character.level}}{{character.upgrade?'+':''}}</view>
+</view>

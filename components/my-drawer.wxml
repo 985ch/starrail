@@ -1,0 +1,4 @@
+<view class="mask" wx:if="{{isShow}}" bindtap='onCancel'></view>
+<view class="drawer-box" animation="{{animation}}" style="height:{{height}}px;" wx:if="{{isShow}}">
+  <slot></slot>
+</view>

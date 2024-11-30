@@ -1,0 +1,38 @@
+<view class="spaceBox">
+  <view>
+    <view class="inline labelText">后台队伍</view>
+    <view class="inline tipText">用于比较的队伍，仅对比相同的当前角色</view>
+  </view>
+  <view>
+    <view class="inline tagBtn" bindtap="onSwitchTeam">交换队伍</view>
+    <view class="inline tagBtn" bindtap="onSyncTeam">同步队伍</view>
+  </view>
+</view>
+<view class="bottomLine"></view>
+<view class="lineBox">
+  <view>
+    <char-icon character="{{members[curChar] || null}}" mini></char-icon>
+    <view class="skillBox">{{skillText}}</view>
+  </view>
+  <view>
+    <view wx:if="{{curChar>=0}}" class="lineBox">
+      <view class="weaponName {{weapon.rarity || 'invalidText'}}">{{weapon.name}}{{weapon.star?'['+weapon.star+']':''}}</view>
+    </view>
+    <view wx:else class="weaponName invalidText">无相同角色可供比较</view>
+    <view class="borderBox enemyBox">
+      <view class="spaceBox grayLine">
+        <view class="weaponName {{enemy.shield>=8?'SSR':(enemy.shield<3?'R':'SR')}}">木人桩{{enemyIdx+1}}({{enemy.level}})</view>
+        <view class="weaponName">韧性{{enemy.shield}}</view>
+      </view>
+      <view class="lineBox attrBox">
+        <image class="weakImg" wx:for="{{enemy.weakList}}" wx:key="index" src="/images/base/{{dmgTypeInfo[item].img}}"></image>
+      </view>
+    </view>
+    <view>
+      <image class="tinyIcon bg{{item.rarity}}" src="{{images[item.name]}}" wx:for="{{members}}" wx:key="index"/>
+    </view>
+  </view>
+  <view class="fillBox borderBox buffBox">
+    <buffs wx:if="{{curChar>=0}}" class="inline" member="{{charBase.name || ''}}" enemy="{{enemy? '木人桩'+ (enemyIdx+1):''}}" tid="{{tid}}" limit="{{99}}"></buffs>
+  </view>
+</view>

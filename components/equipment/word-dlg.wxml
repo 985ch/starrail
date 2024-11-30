@@ -1,0 +1,53 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<my-dlg show="{{show}}" title="词条配比计算[{{character}}]" confirmText="{{confirmText}}" cancelText="{{cancelText}}"
+  bind:cancel="onCancel" bind:confirm="onConfirm" height="{{900}}" overwriteCancel>
+  <view class="title bottomLine"> 当前阶段 </view>
+  <view class="lineBox spc btmSpc">
+    <view class="stepBox box {{step==='配置规则'?'checked':''}}">配置规则</view>
+    <view class="stepBox box {{step==='配置状态'?'checked':''}}">配置状态</view>
+    <view class="stepBox box {{step==='正在计算'?'checked':''}}">正在计算</view>
+    <view class="stepBox box {{step==='完成计算'?'checked':''}}">完成计算</view>
+  </view>
+  <block wx:if="{{step==='配置规则'}}">
+    <view class="title bottomLine">配装规则</view>
+    <rule-box name="{{character}}" rule="{{rule}}" attrs="{{attrs}}" count="{{rCount}}" bind:change="onSettingChange"></rule-box>
+    <view class="title topSpace bottomLine">主词条锁定</view>
+    <main-word mainWord="{{main}}" bind:change="onSettingChange"></main-word>
+    <view class="title topSpace bottomLine">套装限制</view>
+    <set-selector tips="{{['外圈可以不指定套装，或者选择2+2或4件套，不支持2+散件','辅助角色建议指定内圈，输出角色可以不用指定']}}"
+      set4="{{set4}}" set2="{{set2}}" bind:change="onSettingChange"></set-selector>
+    <view class="title topSpace bottomLine">词条规则</view>
+      <view class="spc">
+      <view class="tip">设置词条总数，词条总数应当在6到54之间</view>
+      <view>
+        <view class="inline label">有效词条数量</view>
+        <num-input class="inline box inputBox" min="{{6}}" max="{{54}}" value="{{wordCount}}" bind:change="changeWordCount"></num-input>
+      </view>
+      <view>
+        <view class="inline check box" bindtap="onSwapMaxValue">{{useMaxValue?'按最大词条计算':'按平均词条计算'}}</view>
+        <view class="inline check box" bindtap="onSwapSmallWord">{{noSmallWord?'不算3个小词条':'算上3个小词条'}}</view>
+      </view>
+      <view>
+        <view class="inline check box" bindtap="onSwap8Words">{{only8Words?'禁止初始4词条':'允许初始4词条'}}</view>
+      </view>
+    </view>
+    <view class="title topSpace bottomLine">配速计算</view>
+    <speed-box></speed-box>
+  </block>
+  <block wx:elif="{{step=='配置状态'}}">
+    <view class="title bottomLine">状态配置</view>
+    <buff-selector set4="{{set4}}" set2="{{set2}}" buffInfo="{{buffInfo}}" bind:change="onSettingChange"></buff-selector>
+  </block>
+  <block wx:else>
+    <view class="spc">{{'计算中：' + (count) + '/' + total+'(有效词条:'+wordCount+')'}}</view>
+    <view class="spc">总耗时：{{filter.toFix(cost,1, false)}}秒（预计耗时：{{cost===0 || total===0 ? '-' : filter.toFix(total/count*cost, 1, false)}}秒）</view>
+    <equip-words wx:if="{{results.length>0}}" wx:for="{{results}}" wx:key="index" equips="{{item.equips}}" ranking="{{item.ranking}}"
+      sets="{{item.sets}}" score="{{filter.floor(item.score)}}" simple="{{index>0}}"></equip-words>
+    <view class="spc setName" wx:if="{{results.length===0}}">无法生成符合要求的配装组合</view>
+    <view class="introText">最佳词条搭配计算以角色当前状态为依据，最佳词条组合会随角色当前状态变化。</view>
+    <view class="introText">每种套装组合仅保留最佳结果。</view>
+    <view class="adBtn">
+      <my-button wx:if="{{step==='正在计算'}}" size="mini" type="grey" bindtap="onShowAd">干等着无聊，看个6~15秒的广告支持一下</my-button>
+    </view>
+  </block>
+</my-dlg>

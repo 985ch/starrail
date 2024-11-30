@@ -1,0 +1,17 @@
+{
+  "usingComponents": {
+    "logs": "/pakBattle/components/logs",
+    "timeline": "/pakBattle/components/timeline",
+    "enemy-box": "/pakBattle/components/enemy",
+    "member-box": "/pakBattle/components/member",
+    "buff-list": "/components/character/buffs",
+    "data-dlg": "/pakBattle/components/data",
+    "ai-dlg": "/pakBattle/components/aicfg",
+    "my-bar": "/components/my-bar",
+    "my-dlg": "/components/my-dlg",
+    "my-picker": "/components/my-picker",
+    "timeline-dlg": "/pakBattle/components/load_dlg",
+    "header": "/components/header",
+    "footer": "/components/footer"
+  }
+}

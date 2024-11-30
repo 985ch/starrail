@@ -1,0 +1,161 @@
+@import "../../components/common.wxss";
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items:start;
+}
+.teamText {
+  font-size: 40rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 2rpx 5rpx;
+}
+.left {
+  padding: 5rpx 10rpx;
+  text-align: left;
+}
+.lineObj {
+  padding: 0rpx 10rpx;
+}
+.leftButton {
+  display: inline-block;
+  margin: 2rpx 5rpx;
+}
+.fillRight {
+  flex-grow: 1;
+  border-bottom: 1rpx solid lightgray;
+}
+.right {
+  text-align: right;
+}
+.rightSpace {
+  margin-right: 10rpx;
+}
+.label {
+  color: darkgray;
+  font-size: 28rpx;
+  padding: 5rpx 15rpx;
+  border-bottom: 1rpx solid lightgray;
+}
+.selected {
+  border-top: 1rpx solid lightgray;
+  border-left: 1rpx solid lightgray;
+  border-right: 1rpx solid lightgray;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  border-bottom: 0;
+  color: black;
+}
+.actionBox {
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 60rpx;
+  height: 60rpx;
+  overflow: hidden;
+}
+.waitTime {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: lightgray;
+  font-size: 16rpx;
+  border-radius: 8rpx;
+  padding: 0rpx 1rpx;
+  vertical-align: bottom;
+}
+.dmgIcon {
+  width: 94rpx;
+  height: 94rpx;
+  border: 1rpx solid lightgray;
+}
+.actionIcon {
+  width: 60rpx;
+  height: 60rpx;
+}
+.damageBox {
+  width: 100%;
+  height:400rpx;
+}
+.leftBorder {
+  height: 100rpx;
+  border-left: 1rpx solid lightgray;
+  vertical-align: middle;
+}
+.leftSpace {
+  margin-left: 10rpx;
+}
+.dmgMember {
+  height: 98rpx;
+}
+.dmgBar {
+  display: block;
+  height: 45rpx;
+  font-size: 30rpx;
+}
+.dmgIconBox {
+  display: inline-block;
+  margin: 2rpx 5rpx;
+  vertical-align: middle;
+  position: relative;
+}
+.dmgTip {
+  position: absolute;
+  bottom: 10rpx;
+  right: 0;
+  background-color: lightgray;
+  font-size: 16rpx;
+  padding: 0rpx 1rpx;
+  vertical-align: bottom;
+}
+.name {
+  font-size: 26rpx;
+}
+.line {
+  width:100%;
+  display: flex;
+  flex-direction: row;
+}
+.rightItem {
+  margin-right: 10rpx;
+}
+.spIcon {
+  display: inline-block;
+  width: 20rpx;
+  height: 22rpx;
+}
+.activated {
+  border-color: red;
+}
+.logBox {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.actionBtn {
+  flex-grow: 1;
+}
+.help {
+  padding: 0rpx 5rpx;
+}
+.unitList {
+  justify-content: center;
+}
+.btnBox {
+  margin-top: 40rpx;
+  margin-bottom: 10rpx;
+}
+.topSpace {
+  margin-top: 10rpx;
+}
+.btnContainer {
+  padding: 10rpx;
+}
+button {
+  font-size: 26rpx;
+  padding: 5rpx 15rpx;
+  line-height: 38rpx;
+  margin: 2rpx 5rpx;
+  background-color: lightgrey;
+}

@@ -1,0 +1,28 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="container spaceBox bg{{gray?'Gray':'White'}}">
+  <view class="inlineBox">
+    <view class="ts">{{filter.t2r(log.t)}}</view>
+    <view wx:if="{{log.unit}}" class="iconBox">
+      <image class="icon bgSSR" src="{{images[log.unit]? images[log.unit]: '/images/base/empty.png'}}"></image>
+      <view wx:if="{{imgIdx[log.unit]}}" class="iconIdx">{{imgIdx[log.unit]}}</view>
+    </view>
+    <view class="act">{{log.action}}{{log.info?'('+log.info+')':''}}</view>
+    <view wx:if="{{images[log.target]}}" class="iconBox">
+      <image class="icon bgSSR" src="{{images[log.target]}}"></image>
+      <view wx:if="{{imgIdx[log.target]}}" class="iconIdx">{{imgIdx[log.target]}}</view>
+    </view>
+  </view>
+  <view class="inlineBox">
+    <view>
+      <view class="rightLine">
+        <view wx:if="{{log.heal}}" class="heal">治疗:{{filter.floor(log.heal)}}</view>
+        <view wx:if="{{log.damage}}" class="damage">伤害:{{filter.floor(log.damage)}}</view>
+        <view wx:if="{{kills}}" class="kills">击杀:{{kills}}</view>
+      </view>
+      <view class="rightLine">
+        <view wx:for="{{tags}}" wx:key="index" class="tag inline {{item.color}}">{{item.tag}}</view>
+      </view>
+    </view>
+    <my-button wx:if="{{log.unit}}" size="mini" left right bindtap="onShowDlg">详情</my-button>
+  </view>
+</view>

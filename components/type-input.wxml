@@ -1,0 +1,26 @@
+<block wx:if="{{type==='number'}}">
+  <num-input class="valueBox inputBox" style="width:{{options[1]>999? 100: 50}}rpx;" value="{{value || 0}}"
+    min="{{options[0]}}" max="{{options[1]}}" bind:change="onNumChange"></num-input>
+</block>
+<block wx:elif="{{options.length <= 2}}">
+  <view class="valueBox" bindtap="onSwitchValue">{{valText}}</view>
+</block>
+<block wx:elif="{{listType==='menu'}}">
+  <my-menu position="{{position}}" offset="50rpx" animate="bottom">
+    <view class="valueBox" slot="button">{{valText}}</view>
+    <view class="menuItem" slot="menu" wx:for="{{enumList}}" wx:key="index" data-idx="{{index}}" bindtap="onSelectMenu">{{item[1] || item[0]}}</view>
+  </my-menu>
+</block>
+<block wx:elif="{{listType==='picker'}}">
+  <my-picker type="array" list="{{enumList}}" value="{{valIdx}}" bind:select="onSelectItem">
+    <view class="valueBox">{{valText}}</view>
+  </my-picker>
+</block>
+<block wx:elif="{{listType==='gpicker'}}">
+  <group-picker list="{{enumList}}" value="{{valArr}}" bind:select="onSelectArr">
+    <view class="valueBox">{{valText}}</view>
+  </group-picker>
+</block>
+<block wx:else>
+  <view  class="valueBox">未知类型:{{type}}</view>
+</block>

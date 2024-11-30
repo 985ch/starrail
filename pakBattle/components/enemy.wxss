@@ -1,0 +1,85 @@
+@import "../../components/common.wxss";
+.enemyBox {
+  width: 140rpx;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8rpx;
+  border: 1rpx solid lightgray;
+  position: relative;
+  overflow: hidden;
+  padding: 5rpx;
+}
+.infoBox {
+  width: 95%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8rpx;
+}
+.enemyIcon {
+  width: 85rpx;
+  height: 85rpx;
+}
+.iconWeak{
+  display: inline-block;
+  width: 25rpx;
+  height: 25rpx;
+}
+.iconWeakMini {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+}
+.progress {
+  width: 120rpx;
+}
+.weakBox {
+  display:block;
+}
+.bgAction {
+  background-color: rgb(230, 230, 230);
+}
+.selected {
+  border: 1rpx solid red;
+}
+.action {
+  border-color:blueviolet;
+  background-color: blueviolet;
+}
+.imageBox {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 85rpx;
+  height: 85rpx;
+}
+.enemyIdx {
+  position: absolute;
+  bottom: 0;
+  left: 2rpx;
+  color: white;
+  font-size: 28rpx;
+  padding: 0rpx 4rpx;
+}
+.dead {
+  filter: grayscale(100%);
+}
+.rebirth {
+  width: 110rpx;
+  margin: 10rpx 0rpx;
+}
+.state {
+  width: 150rpx;
+  text-align: center;
+  color: red;
+  padding: 1rpx 5rpx;
+  background-color: white;
+  transform: rotate(45deg) translateX(45rpx) translateY(-30rpx);
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 21rpx;
+}

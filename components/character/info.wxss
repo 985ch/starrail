@@ -1,0 +1,141 @@
+@import "../common.wxss";
+.descBox {
+  max-width: 520rpx;
+  flex: 1 1 auto;
+  vertical-align: bottom;
+  margin-left:5rpx;
+}
+.half {
+  width: 50%;
+}
+.rowBox {
+  display: flex;
+  flex-direction: column;
+}
+.charBox {
+  margin-left: 1rpx;
+}
+.hpBox {
+  width: 100%;
+  text-align: center;
+}
+.hpText {
+  font-size: 20rpx;
+  padding:3rpx 1rpx;
+}
+.attrText {
+  font-size: 22rpx;
+  padding:0rpx 1rpx;
+}
+.attrImg {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 1rpx;
+}
+.weakImg {
+  width: 29rpx;
+  height: 29rpx;
+  margin: 1rpx;
+}
+.charName {
+  font-size: 32rpx;
+  display: inline-block;
+}
+.weaponName {
+  font-size: 26rpx;
+}
+.tag {
+  font-size: 24rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 10rpx;
+  margin: 0rpx 1rpx;
+}
+.skTag {
+  font-size: 20rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 1rpx 10rpx;
+  margin: 0rpx 1rpx;
+}
+.invalidTag {
+  color:darkgray;
+  background-color: white;
+}
+.invalidText {
+  color:darkgray;
+}
+.delBtn {
+  background-color: lightgray;
+  border-radius: 10rpx;
+  padding: 3rpx 10rpx;
+  font-size: 28rpx;
+  margin-right: 3rpx;
+}
+.equipBox {
+  margin-top: 20rpx;
+}
+.memberBox {
+  margin: 1rpx 5rpx;
+}
+.buffBox {
+  left:2rpx;
+  right:2rpx;
+  padding-bottom: 3rpx;
+  line-height: 24rpx;
+  margin: 0;
+}
+.enemyBox {
+  flex: 1 1 auto;
+}
+.skillBox {
+  font-size: 22rpx;
+  background-color: lightgray;
+  text-align: center;
+}
+.enemyBox {
+  font-size: 22rpx;
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+}
+.normalBox {
+  left:2rpx;
+  right:2rpx;
+}
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}
+.iconTip {
+  font-size: 24rpx;
+  text-align: center;
+}
+.attrBox {
+  height: 29rpx;
+}
+.weakBox {
+  height: 42rpx;
+}
+.activated {
+  border-color: dodgerblue;
+  background-color: dodgerblue;
+  color: white;
+}
+.rightTab {
+  height: 39rpx;
+  font-size: 26rpx;
+  padding: 1rpx 5rpx;
+  vertical-align: middle;
+  border: 1rpx solid lightgray;
+  color: darkgray;
+}
+.rta {
+  color: black;
+  border: 0;
+}
+.funcBox {
+  margin: 5rpx;
+}

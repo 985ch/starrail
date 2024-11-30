@@ -1,0 +1,5 @@
+<view class="tip">
+  <view class="tipLine" wx:for="{{list}}" wx:key="index">
+    <view id="tip{{item.idx}}" class="tipTxt {{item.type}}">{{item.text}}</view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+.dataBox {
+  display: flex;
+  text-align: center;
+  padding: 5rpx;
+}
+.dataLabel {
+  border: 1rpx solid lightgrey;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  padding: 5rpx;
+  font-size: 32rpx;
+  background-color: lightgrey;
+}
+.dataValue {
+  border: 1rpx solid lightgrey;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  padding: 5rpx;
+  font-size: 32rpx;
+}
+.valueTip {
+  float: right;
+  color:darkgray;
+  padding: 0rpx 5rpx;
+}
+.normalSize {
+  font-size: 32rpx;
+}
+.miniSize {
+  font-size: 24rpx;
+}

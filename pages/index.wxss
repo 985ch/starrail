@@ -1,0 +1,11 @@
+@import "../components/common.wxss";
+button {
+  font-size: 26rpx;
+  padding: 5rpx 15rpx;
+  line-height: 38rpx;
+  margin: 2rpx 5rpx;
+  background-color: lightgrey;
+}
+wx-slider .wx-slider-handle-wrapper{
+  height: 10rpx;
+}

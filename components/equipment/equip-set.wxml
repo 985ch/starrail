@@ -1,0 +1,13 @@
+<view class="lineBox">
+  <view class="simpleBox" wx:for="{{partList}}" wx:key="index" wx:for-item="subList">    
+    <icon wx:for="{{subList}}" wx:key="idx" wx:for-key="idx" equip="{{json[item] || null}}" showTag></icon>
+  </view>
+  <view class="borderBox fillBox">
+    <view class="title">{{title}}</view>
+    <view class="scoreText" wx:if="{{simple}}">{{score}}</view>
+    <view wx:else class="lineBox">
+      <my-button class="miniBtn" size="mini" type="grey" left bindtap="onDelete">移除</my-button>
+      <my-button class="miniBtn" size="mini" right bindtap="onSelect">试装</my-button>
+    </view>
+  </view>
+</view>

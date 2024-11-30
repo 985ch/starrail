@@ -1,0 +1,54 @@
+@import "../common.wxss";
+.viewItem {
+  width: 680rpx;
+  height: 75rpx;
+}
+.dlgLine {
+  margin: 0 5rpx;
+}
+.tagTip {
+  font-size: 26rpx;
+  margin: 0 5rpx;
+}
+.leftSpace {
+  margin-left: 25rpx;
+}
+.miniSpace {
+  margin-left: 10rpx;
+}
+.newLine {
+  margin-top: 10rpx;
+}
+.wordItem {
+  font-size: 24rpx;
+  margin-left: 15rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  padding: 0 8rpx;
+}
+.tryBtn {
+  font-size: 28rpx;
+  border: 1rpx solid dodgerblue;
+  border-radius: 10rpx;
+  padding: 2rpx 15rpx;
+  margin-right: 5rpx;
+  background-color: dodgerblue;
+  color: white;
+}
+.tryBtnH {
+  background-color: rgb(0, 93, 187);
+  color:lightgray;
+}
+.subBox {
+  width: 25%;
+  font-size: 26rpx;
+  border: 1rpx solid lightgray;
+  padding: 5rpx 0;
+}
+.subWord {
+  justify-content: center;
+  text-align: center;
+}
+.editBtn {
+  width: 50%;
+}

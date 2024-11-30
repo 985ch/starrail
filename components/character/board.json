@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "attr-box1": "/components/character/attrbox1"
+  }
+}

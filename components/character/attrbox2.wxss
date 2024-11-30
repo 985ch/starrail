@@ -1,0 +1,28 @@
+@import "../common.wxss";
+.greyLine {
+  background-color: rgb(235, 235, 235);
+}
+.label {
+  font-size: 22rpx;
+  padding-left: 5rpx;
+  vertical-align: middle;
+}
+.numberBox {
+  text-align: right;
+}
+.number {
+  font-size: 22rpx;
+  padding-right: 5rpx;
+}
+.addNumber {
+  font-size: 20rpx;
+  vertical-align: middle;
+}
+.box {
+  height: 30rpx;
+  vertical-align: middle;
+}
+.labelBox {
+  display: flex;
+  flex-direction: row;
+}

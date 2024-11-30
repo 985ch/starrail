@@ -1,0 +1,4 @@
+<!--components/my-checkbox.wxml-->
+<view class="checkBox {{type}}{{checked?'Checked':''}} {{left?'left':''}} {{right?'right':''}} {{size}}Size" bindtap="onTap">
+  {{label}}
+</view>

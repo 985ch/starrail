@@ -1,0 +1,22 @@
+@import "../common.wxss";
+.emptyTip {
+  width: 100%;
+  font-size: 32rpx;
+  padding: 10rpx;
+  color: darkgray;
+  text-align: center;
+}
+.normalBox {
+  left:2rpx;
+  right:2rpx;
+}
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}
+.mainBtn {
+  width: 33.33%;
+}

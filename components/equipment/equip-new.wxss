@@ -1,0 +1,45 @@
+@import "../common.wxss";
+.itemBox {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 80rpx;
+  width: 80rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 10rpx;
+  position: relative;
+  margin: 1rpx 1rpx;
+}
+.info {
+  padding: 0rpx 10rpx 0rpx 5rpx;
+  font-size: 24rpx;
+}
+.iconImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.selected {
+  border-color: red;
+}
+.container {
+  padding: 0rpx 5rpx;
+  text-align: center;
+}
+.tipTitle {
+  font-size: 28rpx;
+}
+.tipOp {
+  font-size: 24rpx;
+  padding: 0rpx 5rpx 0rpx 25rpx;
+}
+.tip {
+  font-size: 24rpx;
+  text-align: left;
+}
+.input {
+  font-size: 24rpx;
+  width: 100%;
+  min-height: 150rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+}

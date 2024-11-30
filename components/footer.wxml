@@ -1,0 +1,11 @@
+<view class="verTip">
+  <view>
+    <view class="inline">微信小程序【黑塔配装助手】{{version}}</view>
+    <view class="inline logBtn" bindtap="onLogDlg">修改日志</view>
+  </view>
+  <view>BUG反馈请移步NGA星穹铁道板块本工具介绍帖</view>
+</view>
+<ad unit-id="adunit-7ad733eb0f8ff828"></ad>
+<my-dlg show="{{showLogDlg}}" title="修改日志">
+  <view class="logText" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+</my-dlg>

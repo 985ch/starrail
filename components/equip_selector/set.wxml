@@ -1,0 +1,15 @@
+<view class="spc tip">{{tips[0]}}</view>
+<view class="spc">
+  <my-picker class="inline" type="array" list="{{setNames[0]}}" data-index="{{0}}" bind:select="onSelSet4">
+    <view class="equip box">{{set4[0] || '未指定套装'}}</view>
+  </my-picker>
+  <my-picker class="inline" type="array" list="{{setNames[0]}}" data-index="{{1}}" bind:select="onSelSet4">
+    <view class="equip box">{{set4[1] || '未指定套装'}}</view>
+  </my-picker>
+</view>
+<view class="spc tip">{{tips[1]}}</view>
+<view class="spc">
+  <my-picker class="inline" type="array" list="{{setNames[1]}}" bind:select="onSelSet2">
+    <view class="equip box">{{set2 || '未指定套装'}}</view>
+  </my-picker>
+</view>

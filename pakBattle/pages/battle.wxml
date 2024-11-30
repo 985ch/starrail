@@ -1,0 +1,91 @@
+<!--pages/battle/battle.wxml-->
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<header title="队伍试用" evt="{{evt}}" bind:showAd="onShowAds"></header>
+<view class="container">
+  <view class="lineBox">
+    <view class="label {{viewMode==='log'?'selected':''}}" data-mode="log" bindtap="onChangeMode">战斗日志</view>
+    <view class="label {{viewMode==='damage'?'selected':''}}" data-mode="damage" bindtap="onChangeMode">伤害详情</view>
+    <view class="label {{viewMode==='timeline'?'selected':''}}" data-mode="timeline" bindtap="onChangeMode">对轴模式</view>
+    <view class="label {{viewMode==='team'?'selected':''}}" data-mode="team" bindtap="onChangeMode">队伍管理</view>
+    <view class="fillRight">
+    </view>
+  </view>
+
+  <view wx:if="{{viewMode==='damage'}}" class="damageBox bottomLine">
+    <view wx:for="{{damages}}" wx:key="index" class="dmgMember" bindtap="onRoundMode">
+      <view class="dmgIconBox"  data-name="{{item.name}}" catchtap="onDataDlg" >
+        <image class="dmgIcon bg{{item.rarity}}" src="{{images[item.name]}}"/>
+        <view class="dmgTip">详情</view>
+      </view>
+      <view class="inline leftBorder">
+        <my-bar class="dmgBar" value="{{item.damage}}" max="{{maxDamage}}" maxWidth="{{250}}">
+        实际:{{filter.floor(item.damage/(showRoundDamage? roundN: 1))}}{{showRoundDamage?'/轮':''}}({{filter.toFix(item.damage/(damage || 1)*100, 1, true)}})
+        </my-bar>
+        <my-bar class="dmgBar" value="{{item.expDamage}}" max="{{maxExpDamage}}" maxWidth="{{250}}">
+        期望:{{filter.floor(item.expDamage/(showRoundDamage? roundN: 1))}}{{showRoundDamage?'/轮':''}}({{filter.toFix(item.expDamage/(expDamage || 1)*100, 1, true)}})
+        </my-bar>
+      </view>
+    </view>
+  </view>
+  <logs wx:elif="{{viewMode==='log'}}" class="bottomLine" logs="{{logs}}" images="{{images}}"></logs>
+  <timeline wx:elif="{{viewMode==='timeline'}}" class="bottomLine" actions="{{timeline}}" images="{{images}}" bind:update="updateData"></timeline>
+  <view wx:elif="{{viewMode==='team'}}" class="damageBox bottomLine">
+    <view class="btnContainer">
+      <my-button left right bindtap="onRestart">重置队伍状态为初始值</my-button>
+      <view class="topSpace" />
+      <my-button left right bindtap="onSwitchTeam">交换前当前队伍和后台队伍</my-button>
+      <view class="topSpace" />
+      <my-button left right bindtap="onSaveTimeline">保存本次战斗的排轴数据</my-button>
+      <view class="topSpace" />
+      <my-button left right bindtap="onShowTimelineDlg">加载参考排轴</my-button>
+    </view>
+  </view>
+
+  <view class="spaceBox bottomLine">
+    <view class="lineObj name">总伤害:{{filter.floor(damage)}}(期望:{{filter.floor(expDamage)}})</view>
+    <view class="lineObj name">轮均:{{filter.floor(damage/roundN)}}(期望:{{filter.floor(expDamage/roundN)}})</view>
+  </view>
+  <view class="lineBox bottomLine">
+    <view wx:for="{{actionList}}" wx:key="index">
+      <view class="actionBox {{item.name===memberName || item.name===enemyName?'activated':''}} {{item.newTurn?'leftSpace':''}}">
+        <image class="actionIcon bg{{item.rarity}}" src="{{images[item.name]}}"/>
+        <view class="waitTime">{{filter.toFix(item.wait, 1, false)}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="lineObj">
+    <view class="inline name SR">{{enemyName || '-无-'}}</view>
+    <buff-list wx:if="{{enemyName}}" class="inline" member="{{memberName}}" enemy="{{enemyName || ''}}" mode="enemy"/>
+  </view>
+  <view class="lineBox bottomLine unitList">
+    <enemy-box index="{{index}}" r="{{r}}" selected="{{index===selEnemy}}"
+      actionUnit="{{curUnit?curUnit.name:''}}" logs="{{eLogs[index] || []}}"
+      bind:change="onEnemyChanged" bind:sel="onSelEnemy" wx:for="{{5}}" wx:key="index"></enemy-box>
+  </view>
+  <view class="spaceBox bottomLine">
+    <view class="left">
+      <my-button class="inline" size="mini" left right bindtap="switchAutoBattle">{{autoMode?'手动控制':'自动战斗'}}</my-button>
+      <view class="left name inline">第{{round.round}}轮+{{filter.floor(round.t)}}</view>
+    </view>
+    <view class="right">
+      <image wx:for="{{spMax}}" wx:key="index" class="spIcon" src="/images/base/point{{index>=spMax-sp?'':'E'}}.png"/>
+    </view>
+  </view>
+  <view class="lineObj">
+    <view class="inline name SR">{{memberName || '-无-'}}</view>
+    <buff-list wx:if="{{memberName}}" class="inline"  member="{{memberName}}" enemy="{{enemyName || ''}}" mode="member"/>
+  </view>
+  <view class="bottomLine lineBox unitList">
+    <member-box wx:for="{{4}}" wx:key="index" bind:sel="onSelMember" bind:us="onMemberUS"
+      index="{{index}}" selected="{{index===selMember}}" r="{{r}}" actionUnit="{{curUnit?curUnit.name:''}}" logs="{{mLogs[index] || []}}"></member-box>
+  </view>
+  <view class="lineBox lineObj btnBox">
+      <my-button class="actionBtn inline" wx:for="{{actions}}" wx:key="index" data-index="{{index}}" bindtap="onAction"
+        left="{{index===0}}" right="{{index===actions.length-1}}" disabled="{{item.disable || battleEnd}}" size="large">{{item.text}}</my-button>
+      <my-button class="actionBtn inline" wx:if="{{actions.length===0}}" bindtap="onNext" left right disabled="{{battleEnd}}" size="large">下一回合</my-button>
+  </view>
+</view>
+<data-dlg show="{{showDataDlg}}" member="{{dataMember || ''}}" round="{{round}}"></data-dlg>
+<ai-dlg show="{{showAiDlg}}" bind:confirm="onAutoBattle"></ai-dlg>
+<timeline-dlg show="{{showTimelineDlg}}" bind:loaded="onLoadedTimeline"></timeline-dlg>
+<footer></footer>

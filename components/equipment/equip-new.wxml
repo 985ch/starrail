@@ -1,0 +1,45 @@
+<!--components/equipment/equip-new.wxml-->
+<my-dlg show="{{show}}" confirmText="确定" title="{{title}}" bind:confirm="onConfirm">
+  <block wx:if="{{import}}">
+    <view class="spaceBox">
+      <view  class="labelText">{{importMode?'导入特定遗器':'生成随机遗器'}}</view>
+      <my-button size="mini" left right bindtap="onModeChange">{{importMode?'生成遗器':'导入遗器'}}</my-button>
+    </view>
+  </block>
+  <block wx:else>
+    <view  class="labelText">选择遗器</view>
+  </block>
+  <view class="info" wx:if="{{importMode}}">
+    <textarea class="input" value="{{inputText}}" auto-height bindinput="onInput" bindconfirm="onInputConfirm"
+      placeholder="请输入遗器文本" maxlength="4096" />
+    <view class="tipTitle red">若遗器库中存在重复的遗器，则导入时将会被忽略</view>
+    <view class="tipTitle">目前支持两种导入数据格式：</view>
+    <view class="tipTitle">（2）小程序通过导出得到的自有短文本格式</view>
+    <view class="tipTitle">（3）米游社战绩工具截图+文字识别提取文本后导入</view>
+    <view class="tipOp">操作步骤如下：</view>
+    <view class="tipOp">1、首先进入米游社打开“战绩”小工具</view>
+    <view class="tipOp">2、在“我的角色”中查看角色并切换到“数值模式”</view>
+    <view class="tipOp">3、拉到最下方，确保遗器数据显示完整之后截图（用分享功能也可以，但不推荐）</view>
+    <view class="tipOp">4、在wx中发送截图给任意好友（推荐发送给“文件传输助手”）</view>
+    <view class="tipOp">5、点开图片，点右下角的…，选择“提取文字”</view>
+    <view class="tipOp">6、提取完成后，全选文本并复制，之后就可以导入到本工具了</view>
+    <view class="tipOp red">注意：</view>
+    <view class="tipOp red">不支持4星以下遗器导入且遗器副词条不足4条的时可能会识别错误</view>
+    <view class="tipOp red">该方法目前仅在手机wx下表现尚可，QQ及PC版wx的文本识别准确率很低</view>
+    <view class="tipOp red">目前已知副词条包含速度词条时识别错误概率极高，基本都需要粘贴文本后手动调整</view>
+  </view>
+  <block wx:else>
+    <view class="container">
+      <view class="itemBox {{curIdx===index?'selected':''}}" wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="onSelChange">
+        <image class="iconImg bgSSR" src="/images/equip/{{images[index]}}.png"></image>
+      </view>
+    </view>
+    <view class="container">
+      <view>{{list[curIdx].name}}</view>
+      <view style="min-height:150rpx">
+        <view class="tip">2件套：{{list[curIdx].set2}}</view>
+        <view class="tip" wx:if="{{list[curIdx].set4}}">4件套：{{list[curIdx].set4}}</view>
+      </view>
+    </view>
+  </block>
+</my-dlg>

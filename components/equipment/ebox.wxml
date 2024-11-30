@@ -1,0 +1,25 @@
+<view class="mainBox border{{equipment ? equipment.rarity: 'Invalid'}}">
+  <view wx:if="{{equipment !== null}}">
+    <view class="lineBox bottom{{equipment.rarity}}">
+      <equip-icon equip="{{equipment}}"></equip-icon>
+      <view class="fillRight">
+        <view class="title {{equipment.rarity}}">{{info.short}}+{{equipment.level}}</view>
+        <view class="spaceBox">
+          <view class="attr">{{main.key}}</view>
+          <view class="attr">{{main.value}}</view>
+        </view>
+      </view>
+    </view>
+    <block wx:for="{{4}}" wx:for-index="index" wx:key="index">
+      <view wx:if="{{attrs[index]}}" class="attrBox bg{{index % 2 === 0 ? equipment.rarity: 'Normal'}}">
+        <view class="attr">{{attrs[index].words.length===0 ? '-' : attrs[index].key + '('+ attrs[index].words.length + ')'}}</view>
+        <view class="attr">{{attrs[index].words.length===0 ? '' :  attrs[index].value}}</view> 
+      </view>
+      <view wx:else class="attr bg{{index % 2 === 0 ? equipment.rarity: 'Normal'}}">-</view>
+    </block>
+  </view>
+  <view wx:else class="emptyBox">
+    <view>{{label}}</view>
+    <view style="font-size:30rpx;padding:5rpx;">暂无遗器</view>
+  </view>
+</view>

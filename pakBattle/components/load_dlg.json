@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-dlg":"/components/my-dlg",
+    "data-box":"/pakBattle/components/data-box"
+  }
+}

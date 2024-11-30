@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-label": "/components/my-label",
+    "my-checkbox": "/components/my-checkbox",
+    "my-picker": "/components/my-picker",
+    "group-picker": "/components/group-picker",
+    "equip-info": "/components/equipment/info",
+    "save-data": "/components/character/savedata"
+  }
+}

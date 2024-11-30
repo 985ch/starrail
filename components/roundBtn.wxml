@@ -1,0 +1,6 @@
+<view class="button {{activated?'a1':''}}">
+  <view class="text  {{activated?'a2':''}}">
+    <view>{{texts[0]}}</view>
+    <view>{{texts[1]}}</view>
+  </view>
+</view>

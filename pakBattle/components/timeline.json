@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "recycle-view": "miniprogram-recycle-view/recycle-view",
+    "recycle-item": "miniprogram-recycle-view/recycle-item",
+    "action": "/pakBattle/components/action",
+    "my-dlg": "/components/my-dlg"
+  }
+}

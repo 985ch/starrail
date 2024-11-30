@@ -1,0 +1,9 @@
+@import "../common.wxss";
+@import "../equip_selector/common.wxss";
+.introText {
+  font-size: 24rpx;
+  padding: 2rpx 5rpx;
+}
+.adBtn {
+  margin: 10rpx 0;
+}

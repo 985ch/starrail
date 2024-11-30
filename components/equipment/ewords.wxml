@@ -1,0 +1,25 @@
+<view class="box">
+  <view class="spaceBox">
+    <view class="score">{{title}}</view>
+    <view class="inlineBox">
+      <view class="score">分数:{{score}}</view>
+      <my-button class="btnRemove" type="grey" size="mini" left right wx:if="{{selectable}}" catch:tap="onRemove">移除</my-button>
+    </view>
+  </view>
+  <view wx:if="{{!simple}}" class="spaceBox">
+    <view>
+      <image class="icon" wx:for="{{icons}}" wx:key="index" src="{{item}}"></image>
+    </view>
+    <view class="right">
+      <view class="inlineBox attrBox">
+        <view class="mtab" wx:for="{{mainTabs}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="inlineBox attrBox">
+        <view class="stab" wx:for="{{subTabs}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!simple && selectable}}">
+    <my-button size="mini" left right bindtap="onSelect">试装</my-button>
+  </view>
+</view>

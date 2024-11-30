@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "num-input":"/components/num-input",
+    "my-menu":"/components/my-menu",
+    "my-picker":"/components/my-picker",
+    "group-picker":"/components/group-picker"
+  }
+}

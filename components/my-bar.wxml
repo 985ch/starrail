@@ -1,0 +1,3 @@
+<view class="barBlock" style="width:{{width}}rpx;background-color:{{color}};">
+</view>
+<slot class="barBlock"></slot>

@@ -1,0 +1,7 @@
+.barBlock {
+  height: 38rpx;
+  display: inline-block;
+  margin-top: 7rpx;
+  vertical-align: middle;
+  text-align: center;
+}

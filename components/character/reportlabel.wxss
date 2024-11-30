@@ -1,0 +1,17 @@
+/* components/character/reportlabel.wxss */
+.label {
+  display: inline-block;
+  font-size: 32rpx;
+}
+.labelLine {
+  vertical-align: bottom;
+}
+.tip {
+  font-size: 20rpx;
+}
+.extend {
+  padding-left: 8rpx;
+  display: inline-block;
+  font-size: 22rpx;
+  color:rgb(121, 121, 121);
+}

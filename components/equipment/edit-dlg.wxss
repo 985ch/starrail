@@ -1,0 +1,117 @@
+/* components/equipment/editor.js.wxss */
+.spaceBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.equipContainer {
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+}
+.icon {
+  margin-left: 5rpx;
+}
+.button {
+  flex-grow: 1;
+}
+.subAttrBox {
+  display: flex;
+  width: 25%;
+  border: 1rpx solid rgb(199, 199, 199);
+  background-color: lightgrey;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:dimgrey;
+}
+.attrCountBox {
+  font-size: 24rpx;
+}
+.selectedBox {
+  background-color: white;
+  color: black;
+}
+.sel {
+  border-color: dodgerblue;
+}
+.attrText {
+  font-size: 26rpx;
+  padding: 5rpx 0;
+}
+.slider {
+  display: inline-block;
+  width: 75%;
+  margin: 5rpx 25rpx;
+  vertical-align: middle;
+}
+.slider2 {
+  display: inline-block;
+  width: 72%;
+  margin: 15rpx 30rpx 15rpx 30rpx;
+  vertical-align: middle;
+}
+.sliderText {
+  font-size: 32rpx;
+  display: inline-block;
+}
+.mainBtnBox {
+  display: inline-block;
+}
+.mainBtn {
+  display: inline;
+  font-size: 28rpx;
+  border: 1rpx solid lightgray;
+  padding: 0rpx 12rpx;
+  color: darkgray;
+}
+.left {
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.right {
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.sliderBox {
+  text-align: center;
+}
+.roundBtn {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 38rpx;
+  height: 55rpx;
+  width: 55rpx;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1rpx solid darkgray;
+  margin: 10rpx 0rpx;
+}
+.subWordBtn {
+  display: flex;
+  width:16.67%;
+  justify-content: center;
+  font-size: 28rpx;
+  border: 1rpx solid lightgray;
+  padding: 5rpx 0rpx;
+  color: darkgray;
+}
+.selectedBtn {
+  background-color: dodgerblue;
+  color: white;
+  border-color: dodgerblue;
+}
+.disableBtn {
+  background-color: lightgray;
+}
+.wordsText {
+  font-size: 28rpx;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}

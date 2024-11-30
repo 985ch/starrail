@@ -1,0 +1,21 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="spaceBox">
+  <view class="title">{{info.key}}</view>
+  <view class="inlineBox">
+    <my-button class="btn {{!matched?'rSpace':''}}" size="mini" type="grey" left right="{{!matched}}" bindtap="onDelete">删除</my-button>
+    <my-button class="btn rSpace" wx:if="{{matched}}" size="mini" right bindtap="onLoad">加载</my-button>
+  </view>
+</view>
+<view class="lineBox bottomLine">
+  <view wx:for="{{info.members}}" wx:key="index" class="charBox">
+    <view class="iconBox">
+      <image src="{{images[item.name]}}" class="icon"></image>
+      <view wx:if="{{item.soul!==0}}" class="soul">{{item.soul}}</view>
+    </view>
+    <view class="intro">
+      <view class="{{rarities[item.weapon]}}">{{item.weapon? item.weapon+'('+item.wStar+')':'- 无 -'}}</view>
+      <view>{{item.eInfo}}</view>
+      <view>速度:{{filter.toFix(item.speed,1,false)}}</view>
+    </view>
+  </view>
+</view>

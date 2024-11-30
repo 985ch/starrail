@@ -1,0 +1,8 @@
+<!--components/my-label.wxml-->
+<view class="dataBox">
+  <view class="dataLabel {{size}}Size" style="width:{{labelwidth * 10}}%">{{label}}</view>
+  <view class="dataValue {{size}}Size" style="width:{{(10 - labelwidth) * 10}}%">
+    <slot></slot>
+    <view wx:if="{{showtip}}" class="{{size}}Size valueTip" catchtap="onTipTap">{{tipText}}</view>
+  </view>
+</view>

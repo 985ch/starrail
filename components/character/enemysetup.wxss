@@ -1,0 +1,48 @@
+@import "../common.wxss";
+.mainBox {
+  margin: 5rpx;
+  min-height: 650rpx;
+}
+.nameBox {
+  margin-bottom: 15rpx;
+}
+.mainImage {
+  max-width: 120rpx;
+  height: 120rpx;
+}
+.name {
+  padding: 0 5rpx;
+  font-size: 36rpx;
+}
+.tip {
+  font-size: 24rpx;
+  padding: 0 5rpx;
+  color: darkgray;
+}
+.image {
+  max-width: 50rpx;
+  height: 50rpx;
+}
+.inputBox {
+  display: inline-block;
+  width: 300rpx;
+  text-align: left;
+}
+.attrBox {
+  flex-grow: 1;
+  border-radius: 10rpx;
+  border: 1rpx solid coral;
+  text-align: center;
+  font-size: 24rpx;
+}
+.disabledAttr {
+  border-color: rgb(240, 240, 240);
+  color: lightgray;
+  filter: grayscale(100%);
+}
+.delBtn {
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 15rpx;
+  background-color: rgb(230, 230, 230);
+}

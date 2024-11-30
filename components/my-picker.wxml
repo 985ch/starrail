@@ -1,0 +1,14 @@
+<!--components/my-picker.wxml-->
+<view bindtap="showDrawer"><slot></slot></view>
+<my-drawer show="{{showDrawer}}" height="{{386}}">
+  <view class="top">
+		<view class="top-text" catchtap="onCancel">取消</view>
+		<view class="top-text" catchtap="onOK">确定</view>
+	</view>
+  <picker-view  class="content" style="height:350px;" value="{{selected}}" immediate-change bindchange="onChange">
+    <picker-view-column>
+			<view wx:if="{{type === 'number'}}" wx:for="{{end - start + 1}}" wx:key="unique" class="item">{{item + start}}</view>
+			<view wx:if="{{type !== 'number'}}" wx:for="{{list}}" wx:key="index" wx:for-index="index" class="item">{{item[key] || item}}</view>
+		</picker-view-column>
+  </picker-view>
+</my-drawer>

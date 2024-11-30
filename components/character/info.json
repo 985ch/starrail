@@ -1,0 +1,21 @@
+{
+  "component": true,
+  "usingComponents": {
+    "char-icon": "/components/character/icon",
+    "buffs": "/components/character/buffs",
+    "round-button": "/components/roundBtn",
+    "board": "/components/character/board",
+    "report": "/components/character/report",
+    "selector": "/components/character/selector",
+    "char-editor": "/components/character/editor",
+    "equip-info": "/components/equipment/info",
+    "back-team": "/components/character/back-team",
+    "buff-editor": "/components/character/buff-editor",
+    "e-team": "/components/character/eteam",
+    "computer": "/components/equipment/computer",
+    "data-manager": "/components/team/manager",
+    "valuation": "/components/equipment/valuation",
+    "upgrade": "/components/equipment/upgrade",
+    "sync-data": "/components/team/sync"
+  }
+}

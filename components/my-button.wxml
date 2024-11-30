@@ -1,0 +1,3 @@
+<view class="btn {{disabled?'disable':type}} {{size}} {{left?'left':''}} {{right?'right':''}}" hover-class="{{disabled?'disable':type}}Hover">
+  <slot></slot>
+</view>

@@ -1,0 +1,47 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="container line bg{{gray?'Gray':'White'}}">
+  <view class="halfLine spaceBox">
+    <block wx:if="{{action}}">
+      <view class="inlineBox">
+        <view class="leftSpace iconBox">
+          <image class="icon bgSSR" src="{{images[action.unit]? images[action.unit]: '/images/base/empty.png'}}"></image>
+        </view>
+        <view class="act {{selected?'red':''}}">{{action.action}}</view>
+        <view wx:if="{{images[action.target]}}" class="iconBox">
+          <image class="icon bgSSR" src="{{images[action.target]}}"></image>
+          <view wx:if="{{imgIdx[action.target]}}" class="iconIdx">{{imgIdx[action.target]}}</view>
+        </view>
+      </view>
+      <view class="rightText">
+        <view class="miniText">{{filter.t2r(action.state.t)}}</view>
+        <view class="spBox">
+          <image wx:for="{{action.state.spMax}}" wx:key="index" class="spIcon" src="/images/base/point{{index>=action.state.spMax-action.state.sp?'':'E'}}.png"/>
+        </view>
+        <view class="miniText">{{filter.shortNumber(action.state.expDamage)}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="index {{selected?'red':''}}">{{index+1}}</view>
+  <view class="halfLine spaceBox">
+    <block wx:if="{{cmp}}">
+      <view>
+        <view class="miniText">{{filter.t2r(cmp.state.t)}}</view>
+        <view class="spBox">
+          <image wx:for="{{cmp.state.spMax}}" wx:key="index" class="spIcon" src="/images/base/point{{index<cmp.state.sp?'':'E'}}.png"/>
+        </view>
+        <view class="miniText">{{filter.shortNumber(cmp.state.expDamage)}}</view>
+      </view>
+      <view class="inlineBox">
+        <view class="iconBox">
+          <image class="icon bgSSR" src="{{images[cmp.unit]? images[cmp.unit]: '/images/base/empty.png'}}"></image>
+        </view>
+        <view class="act {{selected?'red':''}}">{{cmp.action}}</view>
+        <view wx:if="{{images[cmp.target]}}" class="iconBox">
+          <image class="icon bgSSR" src="{{images[cmp.target]}}"></image>
+          <view wx:if="{{imgIdx[cmp.target]}}" class="iconIdx">{{imgIdx[cmp.target]}}</view>
+        </view>
+        <view class="rightSpace" />
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+持续伤害： dot 灼烧 风化 触电 裂伤
+负面状态（无属性变化）： debuff 破韧 冻结 禁锢
+正面状态（无属性变化）： buff
+弱点和抗性： weak weakAll weak+属性 易伤
+攻击： atk atkRate 加攻 减攻
+防御： def defRate dodge defThrough 加防 抵抗 减防 抵抗降低 破防
+命中： hit 命中
+减伤： damageRate 减伤
+速度： speed speedRate  减速 加速
+附加伤害： 附加伤害
+增伤： 增伤 bonusAll bonus+属性 bonus+伤害类型
+抗性： defendAll 加抗 defend+属性 defend+伤害类型
+生命： hp 生命上限
+双爆： criRate criDamage 暴击 暴伤
+能量： enRate 充能
+治疗量: healRate 治疗量
+附带报告： report
+可以移除: removable 

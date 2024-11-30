@@ -1,0 +1,13 @@
+@import "../common.wxss";
+@import "./common.wxss";
+.numBox {
+  width: 80rpx;
+  vertical-align: bottom;
+}
+.leftSpace {
+  margin-left: 25rpx;
+  margin-right: 5rpx;
+}
+.actBox {
+  width: 50rpx;
+}

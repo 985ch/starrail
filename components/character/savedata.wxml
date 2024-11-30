@@ -1,0 +1,19 @@
+<view class="spaceBox">
+  <view class="labelText">角色配置</view>
+  <view class="tagBtn" bindtap="onLoadTrial">加载初始配置</view>
+</view>
+<view class="spaceBox dataItem {{index%2===0?'greyLine':''}}" wx:for="{{dataList}}" wx:key="index">
+  <view class="leftItem">
+    <view class="inline title">{{item}}</view>
+    <view wx:if="{{item===defaultChar}}" class="tipItem">默认配置</view>
+  </view>
+  <view class="rightItem">
+    <my-button left size="mini" type="red" bindtap="onDelete" data-item="{{item}}">删除</my-button>
+    <my-button wx:if="{{item!==defaultChar}}" size="mini" type="grey" bindtap="onSetDefault" data-item="{{item}}">设为默认</my-button>
+    <my-button size="mini" bindtap="onRename" data-item="{{item}}">重命名</my-button>
+    <my-button right size="mini" bindtap="onLoad" data-item="{{item}}">加载</my-button>
+  </view>
+</view>
+<view class="item" wx:if="{{dataList.length<10}}">
+  <my-button left right bindtap="onSaveCharacter">保存当前角色</my-button>
+</view>

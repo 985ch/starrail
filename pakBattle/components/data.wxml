@@ -1,0 +1,45 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<my-dlg show="{{show}}" title="伤害详细数据">
+  <view class="label">当前选中角色：{{curMember}}</view>
+  <view>
+    <view class="inline" wx:for="{{members[0]}}" wx:key="index" bindtap="onSelectMember" data-value="{{item.name}}">
+      <image class="memberIcon  {{'bg'+item.rarity}} {{item.name===curMember?'selected':''}}"
+        src="{{images[item.name]}}"></image>
+    </view>
+  </view>
+  <view class="label">比较对象:{{members[team][idx].name}}</view>
+    <view class="lineBox">
+    <view class="cmpBox {{teamIdx===team?'selected':''}}" wx:for="{{members}}" wx:key="teamIdx" wx:for-index="teamIdx" wx:for-item="tMember">
+      <view>
+        <view class="inline" wx:for="{{tMember}}" wx:key="index" bindtap="onSelectTarget" data-team="{{teamIdx}}" data-idx="{{index}}">
+          <image class="miniIcon  {{'bg'+item.rarity}} {{teamIdx===team && idx===index?'selected':''}}"
+            src="{{images[item.name]}}"></image>
+        </view>
+      </view>
+      <view class="teamText">{{teamIdx===0?'当前':'后台'}}队伍</view>
+    </view>
+  </view>
+  <view class="spaceBox {{index%2===0?'grayLine':''}}" wx:for="{{list}}" wx:key="index" bindtap="onSwitchData">
+    <view class="left">
+      <view class="labelBox">
+        <view>
+          <view class="inline label">{{item.label}}</view>
+          <view wx:if="{{item.p}}" class="inline percent">{{item.p}}</view>
+        </view>
+        <view class="tip" wx:if="{{item.ct}}">
+          <view class="inline">{{showTotal?'累计':'轮均'}}{{showTotal? filter.floor(item.ct[0]): filter.toFix(item.cr[0],2, false)}}次</view>
+          <view class="inline {{showTotal? filter.cmpStyle(item.ct[1]):filter.cmpStyle(item.cr[1])}}">
+            ({{showTotal? filter.cmpText(item.ct[1], true): filter.cmpText(item.cr[1], false)}})
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="dataBox" wx:for="{{showTotal? item.dt: item.dr}}" wx:key="idx" wx:for-index="idx" wx:for-item="itm">
+        <view class="tip">{{itm[0]}}</view>
+        <view>{{item.percent && !showTotal? filter.toFix(itm[1], 2, false): filter.floor(itm[1])}}</view>
+        <view class="mini {{filter.cmpStyle(itm[2])}}">{{filter.cmpText(itm[2], !item.percent || showTotal)}}</view>
+      </view>
+    </view>
+  </view>
+</my-dlg>

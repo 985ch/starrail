@@ -1,0 +1,18 @@
+<!--components/character/report.wxml-->
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="container" wx:for="{{sort}}" wx:key="type" wx:for-item="type">
+  <view class="infoBox">
+    <view wx:if="{{type==='live'}}" class="label">{{labelText[type]}}</view>
+    <view wx:else class="spaceBox">
+      <view class="label">{{labelText[type]}}</view>
+      <view>
+        <view class="total">累计:{{filter.floor(total[type])}}</view>
+        <view class="clear" bindtap="clearTotal" data-type="{{type}}">清空</view>
+      </view>
+    </view>
+    <view class="text">{{report[type].text || ''}}</view>
+    <view class="lineBox {{idx%2===0?'grayLine':''}}" wx:for="{{report[type].list}}" wx:for-index="idx" wx:key="idx">
+      <report-item item="{{item}}" type="{{type}}" data-type="{{type}}" bind:tapNumber="onTapNumber"></report-item>
+    </view>
+  </view>
+</view>

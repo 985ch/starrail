@@ -1,0 +1,34 @@
+/* components/battle/tip.wxss */
+.tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tipLine {
+  width: 100%;
+  text-align: center;
+}
+.tipTxt {
+  width: max-content;
+  background-color: rgb(235, 235, 235);
+  border: 1rpx solid darkgray;
+  padding: 0rpx 5rpx;
+  margin-top: 1rpx;
+  opacity: 0;
+  border-radius: 5rpx;
+}
+.dmg {
+  font-size: 28rpx;
+  color: red;
+}
+.heal {
+  font-size: 28rpx;
+  color:green;
+}
+.add {
+  font-size: 22rpx;
+}
+.remove {
+  font-size: 22rpx;
+  color: green;
+}

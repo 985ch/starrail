@@ -1,0 +1,36 @@
+@import "../common.wxss";
+.item {
+  padding: 5rpx 10rpx;
+  border-bottom: 1rpx solid lightgray;
+}
+.title {
+  font-size: 28rpx;
+}
+.greyLine {
+  background-color: rgb(235, 235, 235);
+}
+.dataItem {
+  padding: 10rpx 5rpx;
+}
+.leftItem {
+  font-size: 36rpx;
+  vertical-align: bottom;
+}
+.tipItem {
+  display: inline-block;
+  font-size: 22rpx;
+  margin-left: 5rpx;
+  color:rgb(148, 148, 148);
+}
+.rightItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}

@@ -1,0 +1,19 @@
+@import "../common.wxss";
+.container {
+  padding: 3rpx 10rpx;
+}
+.label {
+  font-size: 28rpx;
+}
+.item {
+  padding: 10rpx 0rpx;
+}
+.mainText {
+  font-size: 32rpx;
+}
+.miniBtn {
+  width: 110rpx;
+}
+.bgGrey {
+  background-color: rgb(230, 230, 230);
+}

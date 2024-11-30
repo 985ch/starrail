@@ -1,0 +1,166 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="normalBox borderBox">
+  <view>
+    <view class="inline labelText">当前角色</view>
+    <view class="inline tipText">点击头像可更换当前角色，点击信息栏可编辑角色和状态</view>
+  </view>
+  <view class="lineBox">
+    <view class="charBox borderBox">
+      <char-icon wx:if="{{curChar>=0}}" character="{{members[curChar]}}" index="{{curChar+1}}" bindtap="onChangeCharacter" bind:change="onEditCharacter"></char-icon>
+      <view class="tagBtn" bindtap="onChangeCharacter">点击头像更换角色</view>
+      <view class="hpBox">
+        <view class="spaceBox grayLine">
+          <view class="hpText">生命</view>
+          <view class="hpText">{{filter.floor(state.hp)}}{{state.shield>0?'+'+filter.floor(state.shield) : ''}}/{{filter.floor(state.hpMax)}}</view>
+        </view>
+        <view class="spaceBox">
+          <view class="hpText">能量</view>
+          <view class="hpText">{{filter.floor(state.en)}}/{{filter.floor(state.enMax)}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="descBox rowBox">
+      <view class="borderBox" bindtap="onChangeTab" data-target="编辑角色">
+        <view class="spaceBox">
+          <view style="display:flex;">
+            <image class="attrImg" src="/images/base/{{jobImage}}"></image>
+            <image class="attrImg" src="/images/base/{{damageImage}}"></image>
+            <view class="charName {{charBase.rarity}}">{{charBase.name}}{{members[curChar].soul?'[' + members[curChar].soul + ']' : ''}}</view>
+          </view>
+          <view class="tipText">光锥，技能和状态</view>
+        </view>
+        <view>
+          <view class="inline tag">{{weapon.level}}</view>
+          <view class="inline weaponName {{weapon.rarity || 'invalidText'}}">{{weapon.name}}{{weapon.star?'['+weapon.star+']':''}}</view>
+        </view>
+        <view class="buffBox">
+          <view class="inline skTag">{{members[curChar].skillText}}</view>
+          <view class="inline skTag" wx:if="{{members[curChar].skills.ex[index]}}" wx:for="{{charBase.es}}" wx:key="index">{{item}}</view>
+        </view>
+        <view class="buffBox">
+          <view class="inline skTag" wx:for="{{attrs}}" wx:key="index">{{item}}</view>
+        </view>
+      </view>
+      <view class="buffBox borderBox descBox"  bindtap="onChangeTab" data-target="配置状态">
+        <buffs class="inline" member="{{charBase.name || ''}}" enemy="{{enemy? '木人桩'+ (enemyIdx+1):''}}" tid="{{tid}}" limit="{{99}}"></buffs>
+      </view>
+      <view class="lineBox">
+        <my-button class="half" size="mini" left bindtap="onChangeTab" data-target="编辑角色">管理光锥和技能</my-button>
+        <my-button class="half" size="mini" right bindtap="onChangeTab" data-target="配置状态">管理敌我状态</my-button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="normalBox borderBox">
+  <view class="spaceBox">
+    <view>
+      <view class="inline labelText">队伍信息</view>
+      <view class="inline tipText">当前角色的队友及当前选中敌人的信息</view>
+    </view>
+    <view class="tagBtn" data-board="Members" bindtap="onSwitchBoard">{{showMembers?'隐藏':'显示'}}</view>
+  </view>
+  <view wx:if="{{showMembers}}" class="lineBox">
+    <view class="memberBox" wx:if="{{index!==curChar}}" wx:for="{{members}}" wx:key="index" data-index="{{index}}" bindtap="onSelectMember">
+      <char-icon character="{{item}}" mini index="{{index+1}}"></char-icon>
+      <!--view class="skillBox">{{item?item.skillText:'-'}}</view-->
+      <view class="skillBox">点击切换</view>
+    </view>
+    <view class="descBox"  bindtap="onChangeTab" data-target="管理木桩">
+      <!--view class="spaceBox grayLine attrBox">
+        <view class="attrText {{enemy.shield>=8?'SSR':(enemy.shield<3?'R':'SR')}}">木人桩{{enemyIdx+1}}</view>
+        <view class="attrText">等级{{enemy.level}}</view>
+      </view-->
+      <view class="enemyBox">木人桩{{enemyIdx+1}}（点击可更改）</view>
+      <view class="spaceBox weakBox">
+        <view class="attrText {{enemy.shield>=8?'SSR':(enemy.shield<3?'R':'SR')}}">等级{{enemy.level}}</view>
+        <view>
+          <image class="weakImg" wx:for="{{enemy.weakList}}" wx:key="index" src="/images/base/{{dmgTypeInfo[item].img}}"></image>
+        </view>
+      </view>
+      <view class="spaceBox grayLine attrBox">
+        <view class="attrText">生命</view>
+        <view class="attrText">{{filter.floor(enemy.state.hp)}}/{{enemy.hp}}</view>
+      </view>
+      <view class="spaceBox attrBox">
+        <view class="attrText">韧性</view>
+        <view class="attrText">{{filter.floor(enemy.state.shield)}}/{{enemy.shield}}</view>
+      </view>
+      <view class="spaceBox grayLine attrBox">
+        <view class="attrText">防 {{enemy.def || (isPig?300+enemy.level*30:200+enemy.level*20)}}</view>
+        <view class="attrText">攻 {{enemy.atk}}</view>
+        <view class="attrText">速 {{enemy.speed}}</view>
+        <view class="attrText">抗 {{enemy.dodge}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+    <view class="inline labelText">功能模块</view>
+    <view class="inline tipText">左侧选择具体功能，右侧切换功能列表</view>
+</view>
+<view class="spaceBox funcBox">
+  <view class="inlineBox">
+    <round-button wx:for="{{allTabs[rTab]}}" wx:key="index" bindtap="onChangeTab" data-target="{{item}}" text="{{item}}" activated="{{curTab[rTab]===item}}"></round-button>
+  </view>
+  <view bindtap="onSwitchTab">
+    <view class="rightTab {{rTab===0?'rta':'rtt'}}">数据计算</view> 
+    <view class="rightTab {{rTab===1?'rta':'rtt'}}">数据管理</view> 
+  </view>
+</view>
+
+
+
+<!-- 自定义区块开始位置 -->
+<!-- 数据比较 -->
+<view class="borderBox" wx:if="{{curTab[rTab]==='数据对比'}}">
+  <back-team tid="{{cid}}" character="{{charBase.name || ''}}" bind:switch="onSwitchTeam" bind:sync="onSyncTeam"></back-team>
+</view>
+<!-- 遗器配装 -->
+<computer wx:elif="{{curTab[rTab]==='遗器配装'}}" tid="{{tid}}" cid="{{cid}}" part="{{curPart}}" curMember="{{curChar}}" bind:partChange="onPartChange" bind:update="onUpdate" bind:showAd="onShowAd"></computer>
+<!-- 词条计算 -->
+<valuation wx:elif="{{curTab[rTab]==='词条计算'}}" tid="{{tid}}" cid="{{cid}}" part="{{curPart}}" curMember="{{curChar}}" bind:partChange="onPartChange" bind:update="onUpdate" bind:showAd="onShowAd"></valuation>
+<!-- 遗器强化 -->
+<upgrade wx:elif="{{curTab[rTab]==='遗器强化'}}" tid="{{tid}}" cid="{{cid}}" part="{{curPart}}" curMember="{{curChar}}" bind:partChange="onPartChange" bind:update="onUpdate"></upgrade>
+
+<!-- 配置角色 -->
+<char-editor wx:elif="{{curTab[rTab]==='编辑角色'}}" tid="{{tid}}" curMember="{{curChar}}" bind:update="onUpdate"></char-editor>
+<!-- 管理木桩 -->
+<e-team wx:elif="{{curTab[rTab]==='管理木桩'}}" tid="{{tid}}" enemyIdx="{{enemyIdx}}" bind:update="onUpdate"></e-team>
+<!-- 配置状态 -->
+<buff-editor wx:elif="{{curTab[rTab]==='配置状态'}}" tid="{{tid}}" curMember="{{curChar}}" enemyIdx="{{enemyIdx}}" bind:update="onUpdate"></buff-editor>
+<!-- 管理队伍 -->
+<data-manager wx:elif="{{curTab[rTab]==='管理队伍'}}" tid="{{tid}}" bind:update="onUpdate"></data-manager>
+<!-- 数据管理 -->
+<sync-data wx:elif="{{curTab[rTab]==='数据管理'}}" bind:update="onUpdate"></sync-data>
+<!--- 自定义区块结束位置 -->
+
+
+<block wx:if="{{rTab===0}}">
+  <view class="normalBox borderBox">
+    <view class="spaceBox">
+      <view>
+        <view class="inline labelText">遗器信息</view>
+        <view class="inline tipText">可点击右侧按钮切换展示模式</view>
+      </view>
+      <view>
+        <view wx:if="{{showEquips}}" class="inline tagBtn" data-board="Equips" bindtap="onSwitchEquipMode">{{equipMode==='full'?'精简展示':'完整展示'}}</view>
+        <view class="inline tagBtn" data-board="Equips" bindtap="onSwitchBoard">{{showEquips?'隐藏':'显示'}}</view>
+      </view>
+    </view>
+    <equip-info wx:if="{{showEquips}}" tid="{{tid}}" cid="{{cid}}" curMember="{{curChar}}" mode="{{equipMode}}" showWordCount></equip-info>
+  </view>
+  <view class="normalBox borderBox">
+    <view class="spaceBox">
+      <view>
+        <view class="inline labelText">{{staticData?'静态':'实战'}}面板</view>
+        <view class="inline tipText">点击任意位置可切换静态面板和实战面板</view>
+      </view>
+      <view class="tagBtn" data-board="Board" bindtap="onSwitchBoard">{{showBoard?'隐藏':'显示'}}</view>
+    </view>
+    <board wx:if="{{showBoard}}" character="{{members[curChar] || null}}" staticData="{{staticData}}" tid="{{tid}}" cid="{{cid}}" hideTitle bindtap="onSwitchBoardMode"></board>
+  </view>
+  <view class="normalBox borderBox">
+    <report character="{{charBase.name || ''}}" enemy="{{enemy}}" tid="{{tid}}" cid="{{cid}}" hideTitle></report>
+  </view>
+</block>
+<selector tid="{{tid}}" show="{{showSelector}}" index="{{selIndex}}" removable="{{selIndex===curChar}}" bind:select="onSelectCharacter"></selector>

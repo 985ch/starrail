@@ -1,0 +1,1 @@
+<group-picker list="{{removable? charBaseDataR: charBaseData}}" bind:select="onSelectCharacter" show="{{show}}"></group-picker>

@@ -1,0 +1,59 @@
+<my-dlg show="{{show}}" title="编辑遗器" cancelText="取消" confirmText="确认" bind:confirm="onEditOK">
+  <view class="spaceBox">
+    <view class="labelText">基本信息</view>
+    <view class="equipContainer">
+      <my-button size="mini" left bindtap="onResetCurEquip">重置数据</my-button>
+      <my-button size="mini" right bindtap="onRecreateEquip">重新生成</my-button>
+    </view>
+  </view>
+  <view class="equipContainer">
+    <equip-icon class="icon" equip="{{curEquip}}"></equip-icon>
+    <my-label style="flex-grow:3;" label="套装" labelwidth="2" showtip tipText="品质切换" bind:tip="onRarityChange" bindtap="onShowEquipDlg">
+      <view class="inline {{curEquip.name?curEquip.rarity:''}}">{{curEquip.name || '-未装备-'}}</view>
+    </my-label>
+  </view>
+  <view class="equipContainer">
+    <my-label style="flex-grow:1;" label="等级" labelwidth="1">
+      <slider class="slider" min="0" max="{{curEquip.rarity==='SSR'? 15 : 12}}" block-size="19" value="{{curEquip ? curEquip.level : 0}}"
+        bind:change="onLevelChange" bind:changing="onLevelChanging"></slider>
+      <view class="sliderText">{{showLevel}}</view>
+    </my-label>
+  </view>
+  <block wx:if="{{curEquip.main}}">
+    <view class="spaceBox">
+      <view class="labelText">主词条</view>
+      <view class="mainBtnBox">
+        <view class="mainBtn {{index===mainIdx?'selectedBtn':''}} {{index===0?'left':''}} {{index===mainList.length-1?'right':''}}"
+          wx:for="{{mainList}}" wx:key="index" bindtap="onMainWordChange" data-index="{{index}}">{{item.s}}</view>
+      </view>
+    </view>
+    <my-label label="{{main.key}}">{{main.value}}</my-label>
+    <view class="spaceBox">
+      <view class="labelText">副词条</view>
+      <view class="wordsText {{needWords.min>allowWords+1?'red':(needWords.max<allowWords?'green':'')}}">
+        需要词条数：{{needWords.min===needWords.max?needWords.min:needWords.min+'-'+needWords.max}}
+      </view>
+    </view>
+    <view class="equipContainer">
+      <view wx:for="{{attrs}}" wx:key="index" wx:for-index="index" wx:for-item="attr"
+        class="subAttrBox {{index===curAttr?'selectedBox sel':''}} {{index===0?'left':''}} {{index===attrs.length-1?'right':''}}"
+        data-index="{{index}}" bindtap="onSelAttr">
+        <view class="attrText">{{attr.key}}</view>
+        <view>{{attr.value}}</view>
+      </view>
+    </view>
+    <view class="sliderBox">
+      <view class="roundBtn" bindtap="onValueMin">{{'-'}}</view>
+      <slider class="slider2" min="0" max="{{valueList.length-1}}" value="{{valueIdx}}"
+        bind:change="onValueChange" bind:changing="onValueChanging" block-size="19"></slider>
+      <view class="roundBtn" bindtap="onValueAdd">{{'+'}}</view>
+    </view>
+    <view class="equipContainer" wx:for="{{subWords}}" wx:key="index">
+      <view wx:for="{{item}}" wx:key="idx" wx:for-index="idx" wx:for-item="itm" data-attr="{{itm.a}}" bindtap="onSubWordChange"
+        class="subWordBtn {{itm.a===attrs[curAttr].attr?'selectedBtn':''}} {{itm.a===curEquip.main?'disableBtn':''}}">
+        {{itm.k}}
+      </view>
+    </view>
+  </block>
+</my-dlg>
+<equip-new show="{{showEquipDlg}}" part="{{curEquip? curEquip.part: 'head'}}" bind:select="onSelectSet"></equip-new>

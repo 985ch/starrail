@@ -1,0 +1,12 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="memberBox {{isAction?'action':''}} {{selected?'selected':''}}" wx:if="{{show}}" bindtap="onSelected">
+  <image class="memberIcon  {{hp<=0?'dead':'bg'+rarity}}" src="{{image}}"></image>
+  <view class="textBox">
+  <view class="miniText {{hpColor}}">生命:{{filter.floor(hp)}}/{{filter.floor(hpMax)}}{{shield>0?'('+filter.floor(shield)+')':''}}</view>
+  <view class="miniText {{enColor}}">能量:{{filter.floor(en)}}/{{filter.floor(enMax)}}</view>
+  <view class="miniText">{{spText}}</view>
+  </view>
+  <my-button class="bm" left right disabled="{{disableUS}}" catchtap="onUS">终结技</my-button>
+  <view wx:if="{{isAction}}" class="state">行动中</view>
+  <tip logs="{{logs}}"/>
+</view>

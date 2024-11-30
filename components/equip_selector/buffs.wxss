@@ -1,0 +1,19 @@
+@import "../common.wxss";
+@import "./common.wxss";
+.buffLine {
+  height: 55rpx;
+}
+.greyLine {
+  background-color: rgb(238, 238, 238);
+}
+.setName {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+.buffBtn {
+  width: 120rpx;
+}
+.buff {
+  width: 150rpx;
+  background-color: white;
+}

@@ -1,0 +1,1 @@
+  <input type="number" value="{{val}}" bindinput="onInput" bindfocus="onFocus" bindconfirm="onConfirm" bindblur="onBlur"/>

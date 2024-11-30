@@ -1,0 +1,19 @@
+@import "../../components/common.wxss";
+.valueBox {
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 3rpx 10rpx;
+  margin: 2rpx 5rpx 2rpx 0rpx;
+}
+.typeInput {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.label {
+  font-size: 30rpx;
+}
+.tip {
+  font-size: 24rpx;
+  color: darkgray;
+}

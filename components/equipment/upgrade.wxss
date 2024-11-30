@@ -1,0 +1,42 @@
+@import "../common.wxss";
+@import "../equip_selector/common.wxss";
+.miniTip {
+  margin-left: 10rpx;
+  font-size: 18rpx;
+  color: darkgray;
+}
+.emptyText {
+  width: 100%;
+  font-size: 32rpx;
+  color: darkgray;
+  text-align: center;
+}
+.partBox {
+  border: 1rpx solid lightgray;
+  font-size: 28rpx;
+  width: 16.66%;
+  text-align: center;
+  padding: 5rpx 0;
+}
+.buffBox {
+  width: 610rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  text-align: center;
+  margin: 0 10rpx;
+}
+.filterBtn {
+  font-size: 32rpx;
+  border: 1rpx solid lightgrey;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}

@@ -1,0 +1,16 @@
+<!--components/character/attrbox1.wxml-->
+<view class="spaceBox {{mini?'mini':'normal'}} {{grey?'greyLine':''}}">
+  <view class="labelBox">
+    <view class="{{mini?'mini':''}}label">{{label}}</view>
+    <view wx:if="{{compare!==0}}" class="addNumber {{stronger?'red':'green'}}">
+      {{stronger?'+'+compare:compare}}
+    </view>
+  </view>
+  <view class="numberBox">
+    <view class="number">{{value}}</view>
+    <view wx:if="{{base !== ''}}" class="miniNumber">
+      <view class="inline">{{baseValue}}</view>
+      <view wx:if="{{value > baseValue}}" class="inline red">+{{value - baseValue}}</view>
+    </view>
+  </view>
+</view>

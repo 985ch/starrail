@@ -1,0 +1,89 @@
+<view class="lineBox">
+  <view class="partBtn {{part===item.key?'activated': ''}}" wx:for="{{partList}}" wx:key="index" data-part="{{item.key}}" bindtap="onChangePart">{{item.value}}</view>
+</view>
+<view class="lineBox">
+  <my-picker style="flex-grow:1"  end="{{15}}" value="{{minLevel}}" bind:select="onSelectLevel">
+    <my-label size="mini" style="flex-grow:1" label="等级限制" labelwidth="5">{{minLevel}}</my-label>
+  </my-picker>
+  <my-picker style="flex-grow:3" type="array" list="{{setsList || []}}" key="name" data-lkey="setsList" data-key="setName" bind:select="onSelectAttr">
+    <my-label size="mini" label="套装" labelwidth="2">{{setName}}</my-label>
+  </my-picker>
+</view>
+<view class="lineBox">
+  <my-picker style="flex-grow:1"  type="array" list="{{mainList || []}}" data-lkey="mainList" data-key="mainWord" bind:select="onSelectAttr">
+    <my-label size="mini" label="主词条">{{mainWord}}</my-label>
+  </my-picker>
+  <my-picker style="flex-grow:1"  type="array" list="{{attrList}}" data-lkey="attrList" data-key="attr1"  bind:select="onSelectAttr">
+    <my-label size="mini" label="副词条">{{attr1}}</my-label>
+  </my-picker>
+  <my-picker style="flex-grow:1"  type="array" list="{{attrList}}" data-lkey="attrList" data-key="attr2"  bind:select="onSelectAttr">
+    <my-label size="mini" label="副词条">{{attr2}}</my-label>
+  </my-picker>
+</view>
+<view class="lineBox">
+  <recycle-view class="borderBox scrollBox" batch="{{batchSetRecycleData}}" id="equipShowList" width="{{scrollWidth}}" height="{{scrollHeight}}">
+    <recycle-item wx:for="{{equipShowList}}" wx:key="index">
+      <view>
+        <view wx:if="{{item.type==='addBtn'}}" style="display:inline-block;font-size: 0;">
+          <view class="itemBox">
+            <view class="addBox" bindtap="showNewEquipDlg">添加</view>
+          </view>
+        </view>
+        <icon wx:else equip="{{item}}" selected="{{equip? index===showIndex: false}}" showTag data-equip="{{item}}" bindtap="onSelectEquip"></icon>
+      </view>
+    </recycle-item>
+  </recycle-view>
+  <view class="fillBox">
+    <view class="rightBox">
+      <ebox class="eBox" part="{{part}}" equipment="{{equip}}"></ebox>
+      <view class="btnBox">
+        <my-button wx:if="{{showIndex<0}}" size="mini" left right bindtap="onStoreEquip">入库</my-button>
+        <block wx:else>
+          <my-button size="mini" type="{{equip.locked?'grey':'normal'}}" left right bindtap="onSetLock">{{equip.locked? '解锁['+equip.locked+']': '锁定['+charName+']'}}</my-button>
+        </block>
+        <my-button size="mini" left right bindtap="onShowEditDlg">编辑遗器</my-button>
+        <my-button size="mini" type="grey" left right bindtap="onDelete">删除遗器</my-button>
+      </view>
+    </view>
+  </view>
+</view>
+<my-button left right bindtap="onShowImportDlg">管理遗器库数据（导入/导出）</my-button>
+<edit-dlg show="{{showEditDlg}}" equip="{{equip}}" bind:edit="onEditEquip"></edit-dlg>
+<equip-new show="{{showNewEquipDlg}}" part="{{part || 'head'}}" import bind:select="onNewEquip" bind:load="onLoadEquips"></equip-new>
+<my-dlg show="{{showImportDlg}}" title="管理遗器库" cancelText="关闭">
+  <view class="mainBox">
+    <view class="labelText">导入/导出遗器</view>
+    <view class="lineBox">
+      <my-button class="importBtn" left type="grey" bindtap="onExportAll">导出遗器库</my-button>
+      <my-button class="importBtn" right bindtap="onImportAll">导入遗器库</my-button>
+    </view>
+    <view class="fullBtn">
+      <my-button left right bindtap="onImportJson">从JSON文件导入</my-button>
+    </view>
+    <view class="labelText">遗器库整理</view>
+    <view class="lineBox">
+      <my-button class="importBtn" left right type="grey" bindtap="onCleanSame">清空相同遗器</my-button>
+    </view>
+    <view class="labelText">注意事项:</view>
+    <view class="tip red">* 从JSON文件导入时会先清空遗器库，然后再导入</view>
+    <view class="tip red">* 基于OCR技术导出的遗器数据，其速度副词条会被向下取整</view>
+    <view class="tip red">*在手机端，建议将JSON文件发送到微信的“文件传输助手”之后，通过“从JSON文件导入”按钮完成导入</view>
+    <view class="tip red">* PC端无法使用从JSON文件导入功能，但可以打开JSON文件把内容复制到剪贴板后，点击“导入遗器库”完成导入</view>
+    <view class="tip">* 支持yas和HSR-scanner两种JSON格式的文件</view>
+    <view class="tip">* 数据完全相同的遗器，导入时会视为同一个遗器并更新数据</view>
+    <view class="labelText newLine">使用yas导出游戏中的遗器数据：</view>
+    <view class="tip">1、在PC上下载星铁版的yas</view>
+    <view class="tip">2、启动游戏，确保游戏处于全屏模式且分辨率为1920*1080</view>
+    <view class="tip">3、打开遗器管理界面</view>
+    <view class="tip">4、运行yas，等待遗器扫描结束</view>
+    <view class="tip">5、在yas目录下就可以得到包含所有遗器数据的JSON文件</view>
+    <view class="tip red">注意：使用该方法导入的遗器，其速度副词条会被向下取整</view>
+    <view class="labelText newLine">使用reliquary-archiver导出游戏中的遗器数据：</view>
+    <view class="tip">1、在PC上安装npcap并下载reliquary-archiver</view>
+    <view class="tip">2、启动游戏，进入到火车迁跃的界面，但不要登入游戏</view>
+    <view class="tip">3、启动reliquary-archiver，等待界面上出现“listening with a timeout”的字样</view>
+    <view class="tip">4、登入游戏，若干秒后就可以得到JSON文件</view>
+    <view class="tip">5、JSON文件包括游戏中的所有角色数据和遗器数据</view>
+    <view class="tip red">注意：若启动reliquary-archiver时出现闪退现象，说明当前无法正常读取github上的文件，可尝试通过更换DNS服务器或修改host解决，也可以用其他软件让其能访问文件并进入listening状态，但必须在登入游戏前关闭其他软件。</view>
+  </view>
+</my-dlg>

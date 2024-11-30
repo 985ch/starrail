@@ -1,0 +1,16 @@
+<!--components/my-dlg.wxml-->
+<view class="mask" style="z-index:{{zindex}}" wx:if="{{isShow}}"></view>
+<view class="container" style="z-index:{{zindex}};" animation="{{animation}}" wx:if="{{isShow}}" bindtap='onCancel'>
+  <view class="dlg-box" catchtap="doNothing">
+    <view class="title">{{title}}</view>
+    <scroll-view class="{{height===0?'slot-box':''}}" style="{{height>0?'height:'+height+'rpx': ''}}" scroll-y>
+      <slot></slot>
+    </scroll-view>
+    <view class="lineBox" >
+      <view class="footer">
+        <my-button class="dlgBtn" type="grey" left right="{{confirm===''}}" bindtap='onCancel'>{{cancelText}}</my-button>
+        <my-button wx:if="{{confirmText!==''}}" class="dlgBtn" type="normal" right bindtap='onConfirm'>{{confirmText}}</my-button>
+      </view>
+    </view>
+  </view>
+</view>

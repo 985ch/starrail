@@ -1,0 +1,14 @@
+<view class="spaceBox">
+  <view>
+    <view class="label inline">{{label}}</view>
+    <view class="tip inline">{{tip}}</view>
+  </view>
+  <my-button wx:if="{{type!=='target'}}" size="mini" left right bindtap="onRemoveCondition">移除限制</my-button>
+</view>
+<view>
+<type-input class="typeInput" wx:for="{{list}}" wx:key="index" label="{{item.label}}"
+  type="{{item.type || 'enum'}}" value="{{values[index]}}"
+  options="{{item.type==='buffKey'? buffs:( item.type==='buffSelf'? buffList[0]: (item.type==='member'? members: item.values))}}"
+  position="{{index<3?'left':'right'}}" bind:change="onValueChanged" data-index="{{index}}">
+</type-input>
+</view>

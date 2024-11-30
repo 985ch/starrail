@@ -1,0 +1,79 @@
+/* components/character/buffs.wxss */
+.box {
+  display:block;
+  width: 100%;
+  border: 1rpx solid lightgray;
+  border-radius: 5rpx;
+  padding: 0;
+}
+.item {
+  display: inline-block;
+  margin-left: 1rpx;
+  padding: 1rpx 4rpx;
+  border-radius: 5rpx;
+  font-size: 20rpx;
+}
+.tip {
+  color: darkgray;
+  padding: 0 3rpx;
+  border: 1rpx solid lightgray;
+}
+.gray {
+  background-color: lightgray;
+  color: black;
+}
+.orange {
+  background-color: rgb(255, 101, 45);
+  color: white;
+}
+.orangeE {
+  background-color: white;
+  color: coral;
+  padding: 0 3rpx;
+  border: 1rpx solid coral;
+}
+.blue {
+  background-color: dodgerblue;
+  color: white;
+}
+.blueE {
+  background-color: white;
+  color: dodgerblue;
+  padding: 0 3rpx;
+  border: 1rpx solid dodgerblue;
+}
+.red {
+  background-color: rgb(156, 0, 0);
+  color: white;
+}
+.redE {
+  background-color: white;
+  color: rgb(156, 0, 0);
+  padding: 0 3rpx;
+  border: 1rpx solid rgb(156, 0, 0);
+}
+.green {
+  background-color: green;
+  color: white;
+}
+.greenE {
+  background-color: white;
+  color: green;
+  padding: 0 3rpx;
+  border: 1rpx solid green;
+
+}
+.purple {
+  background-color: blueviolet;
+  color: white;
+}
+.black {
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+.blackE {
+  background-color: white;
+  color: rgb(32,32,32);
+  padding: 0 3rpx;
+  border: 1rpx solid rgb(32,32,32);
+}

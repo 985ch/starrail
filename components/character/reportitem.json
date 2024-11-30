@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "report-label": "/components/character/reportlabel",
+    "number-label": "/components/number-label"
+  }
+}

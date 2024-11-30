@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-label": "/components/my-label",
+    "my-picker":"/components/my-picker",
+    "my-dlg":"/components/my-dlg",
+    "equip-icon": "/components/equipment/icon",
+    "equip-new":"/components/equipment/equip-new"
+  }
+}

@@ -1,0 +1,87 @@
+@import "../common.wxss";
+.mainBox {
+  margin: 5rpx;
+  min-height: 650rpx;
+}
+.nameBox {
+  margin-bottom: 15rpx;
+}
+.mainImage {
+  max-width: 120rpx;
+  height: 120rpx;
+}
+.name {
+  padding: 0 5rpx;
+  font-size: 28rpx;
+}
+.tip {
+  font-size: 20rpx;
+  padding: 0 5rpx;
+  color: darkgray;
+}
+.image {
+  max-width: 50rpx;
+  height: 50rpx;
+}
+.inputBox {
+  display: inline-block;
+  width: 300rpx;
+  text-align: left;
+}
+.attrBox {
+  flex-grow: 1;
+  border-radius: 10rpx;
+  border: 1rpx solid coral;
+  text-align: center;
+  font-size: 24rpx;
+}
+.disabledAttr {
+  border-color: rgb(240, 240, 240);
+  color: lightgray;
+  filter: grayscale(100%);
+}
+.delBtn {
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 15rpx;
+  background-color: rgb(230, 230, 230);
+}
+.sliderText {
+  margin-left: 5rpx;
+  font-size: 24rpx;
+}
+.sliderBox {
+  width: auto;
+  flex-direction: row;
+  height: 50rpx;
+}
+.hpSlider {
+  margin:0 15rpx 0 30rpx;
+}
+.enemyTab {
+  width: 20%;
+  text-align: center;
+  font-size: 24rpx;
+  padding: 10rpx 0;
+  border: 1rpx solid lightgray;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  color: darkgray;
+}
+.selected {
+  border-bottom: 0;
+  color: red;
+}
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}
+.teamBox {
+  height: 40rpx;
+}
+.dlgBtn {
+  margin: 5rpx;
+}

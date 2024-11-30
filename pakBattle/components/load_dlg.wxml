@@ -1,0 +1,5 @@
+<my-dlg show="{{show}}" title="排轴存档数据">
+  <view wx:if="{{lists[0].length===0 && lists[1].length===0}}" class="noneTip">-暂无排轴数据-</view>
+  <data-box wx:for="{{lists[0]}}" wx:key="index" info="{{item}}" matched bind:delete="onDelete" bind:load="onLoad"></data-box>
+  <data-box wx:for="{{lists[1]}}" wx:key="index" info="{{item}}" bind:delete="onDelete"></data-box>
+</my-dlg>

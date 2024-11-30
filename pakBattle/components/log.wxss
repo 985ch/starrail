@@ -1,0 +1,67 @@
+@import "../../components/common.wxss";
+.container {
+  width: 745rpx;
+  height: 59rpx;
+  border-bottom: 1rpx solid rgb(235, 235, 235);
+}
+.bgWhite {
+  background-color: white;
+}
+.bgGray {
+  background-color: rgb(235, 235, 235);
+}
+.iconBox {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 55rpx;
+  height: 55rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.iconIdx {
+  position: absolute;
+  top: 0;
+  right: 2rpx;
+  color: white;
+  font-size: 28rpx;
+  padding: 0rpx 4rpx;
+}
+.ts {
+  width: 100rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.act {
+  font-size: 28rpx;
+  margin: 0 10rpx;
+}
+.rightLine {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: flex-end;
+}
+.heal {
+  margin: 0 5rpx;
+  font-size: 24rpx;
+  color: rgb(14, 163, 0);
+}
+.damage {
+  margin: 0 5rpx;
+  font-size: 24rpx;
+  color: red;
+}
+.kills {
+  margin: 0 5rpx;
+  font-size: 24rpx;
+  color:black;
+}
+.tag {
+  font-size: 18rpx;
+  margin-right: 5rpx;
+}

@@ -1,0 +1,20 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="enemyBox {{isAction?'action':''}} {{selected?'selected':''}}" wx:if="{{name!==''}}" bindtap="onSelected">
+  <view class="imageBox">
+    <image class="enemyIcon {{hp<=0?'dead':''}}" src="{{image}}"></image>
+    <view class="enemyIdx">{{name}}</view>
+  </view>
+  <view wx:if="{{hp>0}}" class="infoBox">
+    <view class="weakBox">
+      <image wx:for="{{weakList}}" wx:key="index" class="iconWeak{{weakList.length>5?'Mini':''}}" src="/images/base/{{item}}"></image>
+    </view>
+    <progress class="progress" active-color="#ffcc00" percent="{{100*shield/maxShield}}" stroke-width="3" />
+    <view class="miniText {{hpColor}}">{{filter.shortNumber(hp)}}/{{filter.shortNumber(hpMax)}}</view>
+  </view>
+  <view class="rebirth" wx:else>
+    <my-button size="mini" left right bindtap="onRebirth">重生</my-button>
+  </view>
+  <view wx:if="{{isAction}}" class="state">行动中</view>
+  <tip logs="{{logs}}"/>
+</view>
+<enemy-setup name="木人桩{{name}}" enemy="{{enemyJson}}" show="{{showRebirthDlg}}" bind:change="onEnemyChange"></enemy-setup>

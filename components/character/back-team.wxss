@@ -1,0 +1,44 @@
+@import "../common.wxss";
+.tagBtn {
+  font-size: 22rpx;
+  background-color: lightgray;
+  border-radius: 5rpx;
+  padding: 0rpx 15rpx;
+  margin: 1rpx 5rpx;
+}
+.skillBox {
+  font-size: 22rpx;
+  background-color: rgb(220, 220, 220);
+  text-align: center;
+}
+.weaponName {
+  font-size: 22rpx;
+  margin: 0 2rpx;
+}
+.invalidText {
+  color:darkgray;
+}
+.tinyIcon {
+  width: 52rpx;
+  height: 52rpx;
+  margin-left: 3rpx;
+  border: 1rpx solid lightgray;
+}
+.weakImg {
+  width: 29rpx;
+  height: 29rpx;
+  margin: 1rpx;
+}
+.attrBox {
+  justify-content: center;
+}
+.enemyBox {
+  width: 240rpx;
+}
+.buffBox {
+  left:2rpx;
+  right:2rpx;
+  padding-bottom: 3rpx;
+  line-height: 24rpx;
+  margin: 0;
+}

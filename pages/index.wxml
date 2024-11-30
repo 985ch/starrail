@@ -1,0 +1,3 @@
+<header title="队伍配置" evt="{{evt}}" bind:showAd="onShowAds"></header>
+<info-box tab="{{tab}}" bind:showAd="onShowAds" bind:update="onUpdateData"></info-box>
+<footer></footer>

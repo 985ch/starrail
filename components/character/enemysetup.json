@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-dlg": "/components/my-dlg",
+    "my-label": "/components/my-label",
+    "num-input": "/components/num-input",
+    "group-picker": "/components/group-picker"
+  }
+}

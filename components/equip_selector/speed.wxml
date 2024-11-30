@@ -1,0 +1,16 @@
+<view class="spc tip">计算最低需求速度，注意每动不包括插入行动（如终结技），且每动拉条不包括首动</view>
+<view class="spc">
+  <num-input class="inline box numBox" max="{{5}}" value="{{round}}" data-key="round" bind:change="changeValue"></num-input>
+  <view class="inline label">轮</view>
+  <num-input  class="inline box numBox" min="{{1}}" max="{{99}}" value="{{turn}}" data-key="turn" bind:change="changeValue"></num-input>
+  <view class="inline label">动，拉条</view>
+  <num-input class="inline box numBox" max="{{100}}" value="{{firstBonus}}" data-key="firstBonus" bind:change="changeValue"></num-input>
+  <view class="inline label">%首动</view>
+  <num-input  class="inline box numBox" max="{{100}}" value="{{turnBonus}}" data-key="turnBonus" bind:change="changeValue"></num-input>
+  <view class="inline label">%每动</view>
+</view>
+<view class="spc">
+  <view class="inline">需求速度：{{minSpeed}}</view>
+  <view class="inline leftSpace">各轮总动</view>
+  <view class="inline box actBox {{index===round?'red':''}}" wx:for="{{actions}}" wx:key="index">{{item}}</view>
+</view>

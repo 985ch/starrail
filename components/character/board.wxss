@@ -1,0 +1,35 @@
+/* components/character/board.wxss */
+.mainBox {
+  margin: 2rpx 2rpx;
+}
+.spaceBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.line {
+  height: 5rpx;
+  border-bottom: 1rpx solid lightgray;
+}
+.lineBox {
+  display: flex;
+  flex-direction: row;
+}
+.lineItem {
+  flex-grow: 1;
+}
+.attr {
+  flex-grow: 1;
+}
+.attrContainer {
+  border:1rpx solid lightgray;
+  width: 50%;
+  border-radius: 10rpx;
+  margin: 1rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(235, 235, 235);
+  overflow: hidden;
+}

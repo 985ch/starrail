@@ -1,0 +1,42 @@
+<view class="borderBox mainBox">
+  <view class="labelText">导入角色</view>
+  <view class="bottomLine"/>
+  <view class="mainBox">
+    <view class="labelText">从展柜导入</view>
+    <view class="tip red">每次游戏版本更新后都需要修改，因此请避免在当天进行导入</view>
+    <view class="lineBox">
+      <input class="input" type="number" placeholder="请输入你的UID" value="{{uid}}" bindinput="onInputUid"/>
+      <my-button class="item" right bindtap="onImportMihomo">直接导入</my-button>
+    </view>
+    <view>从剪贴板导出/导入</view>
+    <view class="lineBox">
+      <my-button class="item" type="grey" left bindtap="onExportData">导出到剪贴板</my-button>
+      <my-button class="item" right bindtap="onImportData">从剪贴板导入</my-button>
+    </view>
+    <view>注意事项</view>
+    <view class="tip">
+      <view class="red">* 从展柜导入数据时，可能会出现角色技能不符合实际的情况，请注意纠正</view>
+      <view>* 每5分钟只能从展柜导入一次数据，从剪贴板导入无此限制</view>
+      <view>* 导入数据时角色身上的遗器会自动入库，重复遗器除外</view>
+      <view>* 导入和导出均只影响当前队伍角色数据，后台队伍不受影响</view>
+      <view>* 剪贴板兼容mihomo的数据结构</view>
+      
+    </view>
+  </view>
+</view>
+<view class="borderBox mainBox">
+  <view class="labelText">队伍存档</view>
+  <view class="spaceBox itemBox {{index%2===0?'greyLine':''}}" wx:for="{{teamList}}" wx:key="index">
+    <view class="leftItem">
+      <view class="mainText">{{item}}</view>
+    </view>
+    <view class="rightItem">
+      <my-button left size="mini" type="red" bindtap="onDelete" data-item="{{item}}">删除</my-button>
+      <my-button size="mini" bindtap="onRename" data-item="{{item}}">重命名</my-button>
+      <my-button right size="mini" bindtap="onLoad" data-item="{{item}}">加载</my-button>
+    </view>
+  </view>
+  <view class="mainBox">
+    <my-button wx:if="{{teamList.length<10}}" left right bindtap="onSaveTeam">保存当前队伍</my-button>
+  </view>
+</view>

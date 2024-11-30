@@ -1,0 +1,6 @@
+<!--components/number-label.wxml-->
+<view class="box {{width==='normal'?'':width}}" bindtap="onTap">
+  <view wx:if="{{!simple}}" class="label">{{label}}</view>
+  <view class="value {{compareStyle}} {{width==='short'?'shortValue':''}}">{{text}}</view>
+  <view class="compare {{compareStyle}}">{{compareText}}</view>
+</view>

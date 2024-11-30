@@ -1,0 +1,42 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<my-dlg show="{{show}}" title="编辑{{name}}" cancelText="取消" confirmText="确认" bind:confirm="onConfirm">
+  <view class="mainBox">
+    <view class="lineBox">
+      <image class="mainImage" src="{{image}}"></image>
+      <view>
+        <view class="lineBox nameBox">
+          <view class="name {{enemy.shield>=8?'SSR':(enemy.shield<3?'R':'SR')}}">自动木人桩</view>
+          <my-button size="mini" left bindtap="loadTemplate">加载模板</my-button>
+          <my-button size="mini" type="grey" right bindtap="saveTemplate">保存模板</my-button>
+        </view>
+        <view class="lineBox">
+          <view class="tip">模板：{{template || '无'}}</view>
+          <view wx:if="{{saveData && saveData[template]}}" class="delBtn" bindtap="onDelTemplate">删除模板</view>
+        </view>
+        <view class="tip">攻击力为0的木人桩将不会进行任何行动</view>
+      </view>
+    </view>
+    <view class="labelText">弱点</view>
+    <view class="lineBox">
+      <view class="lineItem attrBox {{weakList[index]===0?'disabledAttr':''}}" wx:for="{{damageTypeList}}" wx:for-index="index" wx:key="index"
+        data-index="{{index}}" bindtap="onWeakBtnTap">
+        <image class="image" src="/images/base/{{item.img}}"></image>
+        <view style="color:{{weakList[index]===1 ? item.color : 'lightgray'}};">{{item.text}}</view>
+      </view>
+    </view>
+    <view class="labelText">属性</view>
+    <my-label class="lineItem" label="防御" labelwidth="2">
+      <view class="spaceBox">
+        <view class="inputBox" bindtap="switchDef">{{data.isPig?'扑满':'普通'}}</view>
+        <view class="tip">防御力计算模板</view>
+      </view>
+    </my-label>
+    <my-label wx:for="{{attrs}}" wx:key="index" class="lineItem" label="{{item.label}}" labelwidth="2">
+      <view class="spaceBox">
+        <num-input  class="inputBox"  min="{{item.min}}" max="{{item.max}}" value="{{data[item.key] || 0}}" data-key="{{item.key}}" bind:change="changeData"></num-input>
+        <view class="tip">{{item.text || '范围'+item.min+'~'+item.max}}</view>
+      </view>
+    </my-label>
+  </view>
+</my-dlg>
+<group-picker list="{{tList}}" bind:select="onTemplateChange" show="{{showTemplates}}"></group-picker>

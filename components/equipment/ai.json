@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-dlg":"/components/my-dlg",
+    "equip-set": "/components/equipment/equip-set",
+    "num-input": "/components/num-input",
+    "my-picker": "/components/my-picker",
+    "rule-box": "/components/equip_selector/rule",
+    "main-word": "/components/equip_selector/mainword",
+    "set-selector": "/components/equip_selector/set",
+    "buff-selector": "/components/equip_selector/buffs",
+    "speed-box": "/components/equip_selector/speed"
+  }
+}

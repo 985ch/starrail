@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "equip-icon": "/components/equipment/icon",
+    "ebox": "/components/equipment/ebox",
+    "attr-box2": "/components/character/attrbox2"
+  }
+}

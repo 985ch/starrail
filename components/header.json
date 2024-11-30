@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-menu":"/components/my-menu",
+    "my-dlg": "/components/my-dlg"
+  }
+}

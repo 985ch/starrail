@@ -1,0 +1,13 @@
+<!--components/character/board.wxml-->
+<view class="mainBox">
+  <view class="lineBox">
+    <view class="lineItem attrContainer">
+      <attr-box1 class="attr" wx:for="{{attrList[0]}}" wx:key="index" wx:for-index="index" grey="{{index%2===1}}" tid="{{tid}}" cid="{{cid}}"
+        attr="{{item[0]}}" base="{{item[1] || ''}}" name="{{charName}}" staticData="{{staticData}}"></attr-box1>
+    </view>
+    <view class="lineItem attrContainer">
+      <attr-box1 class="attr" wx:for="{{attrList[1]}}" wx:key="index" wx:for-index="index" grey="{{index%2===1}}" tid="{{tid}}" cid="{{cid}}"
+        mini attr="{{item[0]}}" addAttr="{{item[1] || null}}" name="{{charName}}" staticData="{{staticData}}" special="{{item[2] || false}}"></attr-box1>
+    </view>
+  </view>
+</view>

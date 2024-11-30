@@ -1,0 +1,30 @@
+@import "./common.wxss";
+.verTip {
+  width: 100%;
+  text-align: center;
+  font-size: 22rpx;
+  margin: 15rpx 0;
+}
+.logBtn {
+  font-size: 22rpx;
+  background-color: rgb(235, 235, 235);
+  border-radius: 5rpx;
+  padding: 1rpx 10rpx;
+  margin-left: 10rpx;
+}
+.logText {
+  font-size: 24rpx;
+  margin: 5rpx 10rpx;
+}
+.thank {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+}
+.nameBox {
+  width: 33%;
+  display: inline-block;
+}
+.mini {
+  font-size: 26rpx;
+}

@@ -1,0 +1,31 @@
+<view class="borderBox">
+  <view class="spaceBox">
+    <view>
+      <view class="inline labelText">遗器库</view>
+      <view class="inline tipText">在这里管理你的遗器</view>
+    </view>
+    <view class="tagBtn" bindtap="switchStore">{{showStore?'隐藏':'显示'}}</view>
+  </view>
+  <equip-store wx:if="{{showStore}}" part="{{part}}" equip="{{equip}}" charName="{{charName}}"
+    bind:partChange="onPartChange" bind:equip="onEquipChange"></equip-store>
+</view>
+<view class="borderBox">
+  <view class="spaceBox">
+    <view>
+      <view class="inline labelText">配装方案</view>
+      <view class="inline tipText">在这里试装不同的配装结果</view>
+    </view>
+    <view class="tagBtn" bindtap="clearList">清空所有方案</view>
+  </view>
+  <view class="emptyTip" wx:if="{{setList.length===0}}">暂无备选方案</view>
+  <block wx:else>
+    <equip-set wx:for="{{setList}}" wx:key="index" json="{{item.equips}}" title="{{item.title}}"
+      data-idx="{{index}}" bind:delete="onDeleteSet" bind:select="onSelectSet"></equip-set>
+  </block>
+</view>
+<view class="lineBox">
+  <my-button class="mainBtn" left bindtap="showAiDlg">智能配装</my-button>
+  <my-button class="mainBtn" type="grey" bindtap="addEquips">加入备选</my-button>
+  <my-button class="mainBtn" right bindtap="confirmEquips">应用配装</my-button>
+</view>
+<ai-dlg show="{{showAiDlg}}" character="{{charName}}" bind:change="onAiSelect" bind:showAd="onShowAd"></ai-dlg>

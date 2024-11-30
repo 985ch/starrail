@@ -1,0 +1,11 @@
+<view class="box">
+  <view bindtap="showMenu">
+    <slot name="button"></slot>
+  </view>
+  <block wx:if="{{isShow}}">
+    <view class="mask" bindtap="hideMenu"/>
+    <view id="menu" style="{{animate}}:{{offset}};" class="menu {{position}}"  bindtap="hideMenu">
+      <slot name="menu"></slot>
+    </view>
+  </block>
+</view>

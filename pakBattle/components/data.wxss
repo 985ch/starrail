@@ -1,0 +1,68 @@
+@import "../../components/common.wxss";
+.left {
+  padding: 0rpx 10rpx;
+  display: flex;
+}
+.right{
+  display: flex;
+}
+.cmpBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  border: 1rpx solid lightgray;
+  border-radius: 10rpx;
+  padding: 8rpx 0rpx 0rpx 0rpx;
+}
+.grayLine {
+  background-color: rgb(235,235,235);
+}
+.label {
+  padding: 0rpx 10rpx;
+  font-size: 30rpx;
+}
+.labelBox {
+  vertical-align: bottom;
+  margin: 0;
+}
+.dataBox {
+  width: 190rpx;
+  text-align: center;
+}
+.tip {
+  font-size: 22rpx;
+}
+.mini {
+  font-size: 16rpx;
+}
+.number {
+  font-size: 28rpx;
+}
+.percent {
+  font-size: 24rpx;
+  color: darkgray;
+}
+.memberIcon {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+}
+.miniIcon {
+  width: 75rpx;
+  height: 75rpx;
+  border: 1rpx solid lightgray;
+  margin: 0rpx 1rpx;
+}
+.selected {
+  border-color: red;
+  color: black;
+}
+.teamText {
+  font-size: 22rpx;
+  color: darkgray;
+}

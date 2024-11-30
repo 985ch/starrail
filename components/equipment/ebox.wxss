@@ -1,0 +1,68 @@
+@import "../common.wxss";
+.mainBox {
+  width: 100%;
+  border-radius: 10rpx;
+  border: 2rpx solid lightgray;
+  text-align: center;
+  margin: 1rpx;
+}
+.emptyBox {
+  width: 100%;
+  min-height: 200rpx;
+  display: flex;
+  font-size: 40rpx;
+  color:dimgray;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-size: 24rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.fillRight {
+  flex: 1 1 auto;
+  padding: 0 2rpx;
+}
+.borderInvalid {
+  border-color: lightgray;
+}
+.borderSR {
+  border-color: blueviolet;
+}
+.borderSSR {
+  border-color: coral;
+}
+.lockText {
+  color: darkgray;
+  font-size: 22rpx;
+}
+.main {
+  font-weight: bold;
+}
+.attrBox {
+  display: flex;
+  justify-content: space-between;
+  line-height: 30rpx;
+}
+.attr {
+  padding: 0 5rpx;
+  font-size: 22rpx;
+}
+.bgNormal {
+  padding: 2rpx;
+}
+.bottomSSR {
+  border-bottom: 1rpx solid rgb(253, 215, 201);
+}
+.bottomSR {
+  border-bottom: 1rpx solid rgb(222, 196, 247);
+}
+.bgSR {
+  padding: 2rpx;
+  background-color: rgb(222, 196, 247);
+}
+.bgSSR {
+  padding: 2rpx;
+  background-color: rgb(253, 215, 201);
+}

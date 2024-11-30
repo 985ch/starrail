@@ -1,0 +1,55 @@
+/* components/character/report.wxss */
+.container {
+  padding:0rpx 3rpx;
+}
+.label {
+  font-size: 28rpx;
+}
+.text {
+  font-size:26rpx;
+}
+.lineBox {
+  border-left: 1rpx solid rgb(235,235,235);
+  border-right: 1rpx solid rgb(235,235,235);
+  border-bottom: 1rpx solid rgb(235,235,235);
+  background-color: white;
+}
+.grayLine {
+  background-color: rgb(235,235,235);
+}
+.spaceBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.total {
+  display: inline-block;
+  font-size: 26rpx;
+  padding-right: 10rpx;
+}
+.clear {
+  width: 75rpx;
+  text-align: center;
+  display: inline-block;
+  font-size: 24rpx;
+  color: darkgray;
+  border: 1rpx solid lightgray;
+}
+.sliderBox {
+  display: flex;
+}
+.slider {
+  height: 24rpx;
+  width: 65%;
+}
+.sliderText {
+  font-size: 28rpx;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+.actBox {
+  display: block;
+}

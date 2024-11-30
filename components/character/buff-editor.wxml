@@ -1,0 +1,18 @@
+<!--components/character/buffdlg.wxml-->
+<view class="borderBox" wx:for="{{list}}" wx:for-index="idx" wx:for-item="mlist" wx:key="idx">
+  <view class="{{info[idx].rarity}}">{{info[idx].name}}</view>
+  <view class="buff-box {{index%2===1?'':'grey'}}" wx:for="{{mlist}}" wx:key="index" wx:for-index="index">
+    <view class="name-container ">
+      <view class="name {{item.activated?'activated':'inactive'}}">
+        {{item.name}}{{(item.max<=1 || item.value===0)?'':'(叠'+item.value+')'}}
+      </view>
+      <view class="name {{item.activated?'activated':'inactive'}}" wx:if="{{item.max===0}}">静态效果</view>
+      <my-button wx:elif="{{item.max<10}}" size="mini" left right data-idx="{{idx}}" data-index="{{index}}" bindtap="onBtnTap"
+        type="{{item.value<item.max?'normal': 'grey'}}">
+        {{item.max===1?(item.value===0?'激活':'取消'):(item.value<item.max?'叠层':'取消')}}
+      </my-button>
+      <num-input class="inputBox" wx:else min="{{0}}" max="{{item.max}}" value="{{item.value}}" data-idx="{{idx}}" data-index="{{index}}" bind:change="changeValue"></num-input>
+    </view>
+    <view class="desc  {{item.activated?'activated':'inactive'}}">{{item.desc}}</view>
+  </view>
+</view>

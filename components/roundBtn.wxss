@@ -1,0 +1,23 @@
+.button {
+  width: 85rpx;
+  height: 85rpx;
+  margin: 0 1rpx;
+  border: 3rpx solid lightgray;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  color: lightgray;
+}
+.a1 {
+  border-color: dodgerblue;
+}
+.a2 {
+  color: black;
+}

@@ -1,0 +1,42 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="borderBox">
+  <view>
+    <view class="inline labelText">配装列表</view>
+    <view class="inline tipText">选择配装组合来比较与现有遗器的差距</view>
+  </view>
+  <block wx:if="{{results.length>0}}">
+    <equip-words class="" wx:if="{{results.length>0}}" wx:for="{{results}}" wx:key="index" equips="{{item.equips}}" ranking="{{item.ranking}}" selectable
+      sets="{{item.sets}}" score="{{filter.floor(item.score)}}" simple="{{index!==curSel}}" data-index="{{index}}" bindtap="onSelResult"
+      bind:remove="onRemoveSet" bind:select="onTrySet"></equip-words>
+  </block>
+  <block wx:else>
+    <view class="info">尚未计算最佳词条配比</view>
+  </block>
+  <view class="lineBox">
+    <my-button class="mainBtn" type="grey" left bindtap="onEvaluate">计算最佳配比</my-button>
+    <my-button class="mainBtn" right bindtap="confirmEquips">装备指定遗器</my-button>
+  </view>
+</view>
+<view class="borderBox">
+  <view class="spaceBox">
+    <view>
+      <view class="inline labelText">额外词条</view>
+      <view class="inline tipText">所有词条数值均以金色中档计算</view>
+    </view>
+    <view class="tagBtn" bindtap="onResetAttr">重置词条数量</view>
+  </view>
+  <view class="attrBox">
+    <view class="inline attr" wx:for="{{subAttrs}}" wx:key="index">
+      <view class="spaceBox attrText">
+        <view>{{item[0]}}</view>
+        <view>{{bonusAttr[item[1]] && bonusAttr[item[1]]>0?'+':''}}{{bonusAttr[item[1]] || 0}}</view>
+      </view>
+      <view class="lineBox">
+        <my-button class="attrBtn" size="mini" type="green" left data-key="{{item[1]}}" bindtap="onMinus">-</my-button>
+        <!--my-button class="attrBtn" size="mini" type="grey" data-key="{{item[1]}}" bindtap="onEdit">编辑</my-button-->
+        <my-button class="attrBtn" size="mini" type="red" right data-key="{{item[1]}}" bindtap="onPlus">+</my-button>
+      </view>
+    </view>
+  </view>
+</view>
+<word-dlg character="{{charName}}" show="{{showWordDlg}}" bind:complete="onBestWords" bind:showAd="onShowAd"></word-dlg>

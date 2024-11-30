@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-dlg": "/components/my-dlg"
+  }
+}

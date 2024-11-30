@@ -1,0 +1,107 @@
+<my-dlg show="{{show}}" title="自动行动模式配置" confirmText="启动" cancelText="取消" bind:confirm="onConfirm">
+  <view class="container">
+    <view class="moduleBox">
+      <view class="title bottomLine"> 通用配置 </view>
+      <view class="label">请按顺序添加施放秘技的角色</view>
+      <view>
+        <view wx:for="{{spList}}" wx:key="index" class="spList inline">
+          <view class="spItem inline {{memberJson[item].rarity}}">{{item}}</view>
+          <view class="spDelete inline" data-idx="{{index}}" bindtap="onDelSpMember">X</view>
+        </view>
+        <my-menu class="inline" wx:if="{{spList.length<5}}" position="{{spList.length<3?'left':'right'}}" offset="50rpx">
+          <view slot="button" class="spList addBtn">添加</view>
+          <view slot="menu" class="menuItem {{memberJson[item].rarity}}" wx:for="{{members}}" wx:key="index"
+            data-member="{{item}}" bindtap="onNewSpMember">{{item}}</view>
+        </my-menu>
+      </view>
+      <view class="label">配置终结技结算顺序</view>
+      <movable-area class="lineBox usLine">
+        <movable-view wx:for="{{usList}}" wx:key="index" class="usList" bindchange="onUsBlockMoving" bindtouchend="onUsSorted" data-idx="{{index}}"
+          direction="horizontal" style="width:{{item.width}}rpx" x="{{item.x}}rpx" animation="{{false}}">
+          <view class="usItem inline {{memberJson[item.name].rarity}}">{{item.name}}</view>
+        </movable-view>
+      </movable-area>
+      <view class="label">使用秘技未进入战斗时，触发战斗的角色</view>
+      <my-menu position="left" offset="50rpx">
+        <view slot="button" class="member {{memberJson[firstMember].rarity}}">{{firstMember}}</view>
+        <view slot="menu" class="menuItem {{memberJson[item].rarity}}" wx:for="{{members}}" wx:key="index"
+            data-member="{{item}}" bindtap="onStartMember">{{item}}</view>
+      </my-menu>
+      <view class="label">配置自动行动的速度</view>
+      <view class="sliderBox">
+        <view class="inline" style="padding-left:10rpx;">低速</view>
+        <slider class="slider" min="5" max="50" value="{{aiSpeed}}" bind:change="onSpeedChange" block-size="19"></slider>
+        <view class="inline">高速</view>
+      </view>
+    </view>
+  </view>
+  <my-tab tabs="{{memberTabs}}" selected="{{selMember}}" bind:change="onMemberChange"/>
+  <view style="min-height:450rpx">
+    <view class="tabLine">
+      <view class="labelTab {{item[0]===curLabel?'selTab':''}}" wx:for="{{labels}}" wx:key="index" bindtap="onSelAction" data-label="{{item[0]}}">
+        {{item[1] || '未命名'}}
+      </view>
+      <view class="fillRight"></view>
+    </view>
+    <block wx:if="{{curLabel==='setup'}}">
+      <view class="spaceBox bottomLine">
+        <view class="tip">配置一览</view>
+        <view class="delBtn">
+          <my-button class="inline" size="mini" left bindtap="onExport">导出</my-button>
+          <my-button class="inline" size="mini" bindtap="onImport">导入</my-button>
+          <my-button class="inline" size="mini" right bindtap="onLoadDefault">加载默认配置</my-button>
+        </view>
+      </view>
+      <view wx:if="{{aiList.length===0}}" class="tip">可以把当前的行动模式保存在这里</view>
+      <block wx:for="{{aiList}}" wx:key="index">
+        <view class="save">{{item}}</view>
+        <view class="rightBox bottomLine">
+          <my-button size="mini" left type="red" data-item="{{item}}" bindtap="onDeleteConfig">删除</my-button>
+          <my-button size="mini" right data-item="{{item}}" bindtap="onLoadConfig">加载配置</my-button>
+        </view>
+      </block>
+      <view class="container">
+        <my-button left right bindtap="onSaveConfig">保存当前配置</my-button>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="spaceBox">
+        <view class="tip">
+          {{curLabel==='na'? '仅当其他技能不触发时施放': aiConfig[curLabel].disable? '已禁止自动施放': (!aiConfig[curLabel].rules || aiConfig[curLabel].rules.length===0)? '总是对选中目标施放': '根据以下规则施放'}}
+        </view>
+        <view class="delBtn" wx:if="{{curLabel!=='na'}}">
+          <my-button size="mini" left right type="{{aiConfig[curLabel].disable? 'grey': 'normal'}}" bindtap="onSwitchDisable">
+            {{aiConfig[curLabel].disable?'允许自动施放':'禁止自动施放'}}
+          </my-button>
+        </view>
+      </view>
+      <block wx:if="{{!aiConfig[curLabel].disable}}">
+        <view class="ruleBox" wx:for="{{aiConfig[curLabel].rules}}" wx:key="index">
+          <view class="spaceBox bottomLine">
+            <view>
+              <view class="title inline">施放规则{{aiConfig[curLabel].rules.length===1? '': index+1}}</view>
+              <view class="topBtn inline" wx:if="{{index>0}}" data-index="{{index}}" bindtap="onSetRuleTop">置顶</view>
+            </view>
+            <view>
+              <my-picker class="inline delBtn" type="array" list="{{conditions}}" value="{{0}}" data-index="{{index}}" bind:select="onAddCondition">
+                <my-button slot="button" size="mini" left>
+                  新增限制
+                </my-button>
+              </my-picker>
+              <my-button class="inline delBtn" size="mini" type="grey" right data-index="{{index}}" bindtap="onDelActionRule">
+                删除该条件
+              </my-button>
+            </view>
+          </view>
+          <ai-action wx:for="{{item}}" wx:key="idx" wx:for-item="itm" wx:for-index="idx"
+            action="{{curLabel}}" type="{{itm.t}}" values="{{itm.v}}" member="{{members[selMember]}}"
+            buffList="{{buffList}}" memberList="{{memberList}}"
+            bind:change="onValuesChange" bind:remove="onRemoveCondition" data-index="{{index}}" data-idx="{{idx}}"></ai-action>
+        </view>
+        <view wx:if="{{aiConfig[curLabel].rules.length<20}}" class="container">
+          <my-button left right bindtap="onNewActionRule">新增规则</my-button>
+        </view>
+      </block>
+    </block>
+  </view>
+</my-dlg>

@@ -1,0 +1,28 @@
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+}
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 91;
+  transform: scaleY(0);
+}
+.right {
+  right: 0;
+}
+.left {
+  left: 0;
+}
+.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.box {
+  position: relative;
+}

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "word-dlg": "/components/equipment/word-dlg",
+    "equip-words": "/components/equipment/ewords"
+  }
+}

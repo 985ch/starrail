@@ -1,0 +1,10 @@
+@import "../common.wxss";
+.mainBox {
+  margin: 5rpx 10rpx;
+}
+.tip {
+  font-size: 24rpx;
+}
+.full {
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+<wxs module="filter" src="./../../utils/filter.wxs"></wxs>
+<view class="mainBox">
+  <view class="spaceBox">
+    <view class="inlineBox">
+      <icon equip="{{equip}}" showTag></icon>
+      <view>
+        <view class="inlineBox attrBox">
+          <view class="mtag">
+          提升期望:{{avg<1? filter.toFix(avg*100, 2, true): filter.floor(avg)}}/{{max<1? filter.toFix(max*100, 2, true):filter.floor(max)}}
+          </view>
+          <view class="mtag leftSpace">有提升:{{filter.toFix(win*100, 2, true)}}</view>
+        </view>
+        <view class="inlineBox attrBox">
+          <view class="stag" wx:for="{{datas}}" wx:key="index">{{item.tag}}:{{item.val}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="btn" hover-class="btnHover" bindtap="onViewDetail">查看详情</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+@import "../common.wxss";
+.icon {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 5rpx;
+}
+.mainBox {
+  width: 740rpx;
+  height: 74rpx;
+  border-bottom: 1rpx solid lightgray;
+}
+.mtag {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+}
+.leftSpace {
+  margin-left: 20rpx;
+}
+.stag {
+  margin-top: 8rpx;
+  margin-left: 8rpx;
+  font-size: 22rpx;
+}
+.btn {
+  font-size: 28rpx;
+  border: 1rpx solid dodgerblue;
+  border-radius: 10rpx;
+  padding: 2rpx 10rpx;
+  margin-right: 5rpx;
+  background-color: dodgerblue;
+  color: white;
+}
+.btnHover {
+  background-color: rgb(0, 93, 187);
+  color:lightgray;
+}

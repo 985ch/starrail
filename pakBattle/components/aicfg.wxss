@@ -1,0 +1,118 @@
+@import "../../components/common.wxss";
+.container {
+  margin: 5rpx;
+}
+.moduleBox {
+  width: 100%;
+  border: 1rpx solid lightgray;
+  border-radius: 10rpx;
+}
+.title {
+  color: darkgray;
+  font-size: 32rpx;
+  padding: 2rpx 10rpx;
+}
+.label {
+  font-size: 28rpx;
+  padding: 2rpx 10rpx;
+}
+.action {
+  font-size: 30rpx;
+  padding: 2rpx 10rpx;
+}
+.tip {
+  font-size: 28rpx;
+  padding: 2rpx 10rpx;
+  color: darkgray;
+}
+.spList {
+  margin: 5rpx 5rpx 5rpx 0;
+  padding: 5rpx 10rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+}
+.spItem {
+  margin: 0 5rpx 0 0;
+}
+.tabLine {
+  display: flex;
+  flex-direction: row;
+}
+.labelTab {
+  border: 1rpx solid lightgray;
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+  padding: 2rpx 15rpx;
+  font-size: 32rpx;
+  color: darkgray;
+}
+.selTab {
+  color: black;
+  border-bottom: 0;
+}
+.fillRight {
+  flex-grow: 1;
+  border-bottom: 1rpx solid lightgray;
+}
+.spDelete {
+  margin: 0 0 0 5rpx;
+  color: red;
+}
+.usLine {
+  width: 100%;
+  height: 50rpx;
+}
+.menuItem {
+  padding: 5rpx 10rpx;
+  width: 220rpx;
+  background-color: white;
+  border: 1rpx solid lightgray;
+  font-size: 36rpx;
+  text-align: center;
+}
+.usList {
+  padding: 5rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  background-color: white;
+  font-size:30rpx;
+  width:150rpx;
+  height: 40rpx;
+  text-align: center;
+}
+.member {
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 3rpx 10rpx;
+  margin: 2rpx 5rpx;
+}
+.addBtn {
+  background-color: rgb(230, 230, 230);
+}
+.delBtn {
+  padding: 2rpx 0rpx;
+}
+.slider {
+  display: inline-block;
+  width: 70%;
+  margin: 15rpx 30rpx 15rpx 30rpx;
+  vertical-align: middle;
+}
+.topBtn {
+  padding: 3rpx 15rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+.ruleBox {
+  margin: 5rpx;
+  padding: 0rpx 5rpx 0rpx 10rpx;
+  border: 1rpx solid darkgray;
+  border-radius: 10rpx;
+}
+.save {
+  font-size: 36rpx;
+  padding: 0rpx 10rpx;
+}
